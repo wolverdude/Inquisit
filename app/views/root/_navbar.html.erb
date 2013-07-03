@@ -1,0 +1,27 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <ul class="nav">
+        <li class="active">
+          <a class="brand" href="#">Clonora</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Write
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#/questions/new">Add Question</a></li>
+            <li><a href="#">Answer Questions</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Home</a></li>
+        <% if user_signed_in? %>
+          <%= render :partial => "user_menu" %>
+        <% else %>
+          <%= link_to "Login", new_user_session_path %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+

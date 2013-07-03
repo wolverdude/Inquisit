@@ -1,0 +1,11 @@
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <%= current_user.name %>
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="#"><%= current_user.name %>'s Posts</a></li>
+    <li>
+      <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+    </li>
+  </ul>
+</li>
