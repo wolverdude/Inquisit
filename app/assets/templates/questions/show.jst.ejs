@@ -1,0 +1,9 @@
+<h2><%= question.escape('title') %></h2>
+<p><%= question.escape('description') %></p>
+
+<h3>Answers:</h3>
+<ul>
+  <% question.get('answers').each(function(answer) { %>
+    <li><%= answer.escape('text') %></li>
+  <% }); %>
+</ul>
