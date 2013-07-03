@@ -1,2 +1,7 @@
 <h1>Hi <%= @user.name %>!</h1>
-<p>Find me in app/views/root/index.html.erb</p>
+
+<div id="content"></div>
+
+<script type="application/json" id="bootstrap">
+  <%= {user: @user, questions: @questions}.to_json.html_safe %>
+</script>

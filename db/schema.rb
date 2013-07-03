@@ -28,9 +28,12 @@ ActiveRecord::Schema.define(:version => 20130703004957) do
   create_table "questions", :force => true do |t|
     t.string   "title",       :null => false
     t.text     "description"
+    t.integer  "asker_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "questions", ["asker_id"], :name => "index_questions_on_asker_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

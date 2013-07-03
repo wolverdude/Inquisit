@@ -1,11 +1,13 @@
 Clonora::Application.routes.draw do
-  get "questions/index"
 
-  get "questions/show"
-
-  get "root/index"
+  root :to => "root#index"
+  match "index" => "root#index"
 
   devise_for :users
 
-  root :to => "root#index"
+  resources :questions, :except => [:edit, :new] do
+    resource :answer, :only => [:create]
+  end
+  resources :answers, :except => [:create, :edit, :new]
+
 end
