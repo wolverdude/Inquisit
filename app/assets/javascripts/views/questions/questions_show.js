@@ -3,7 +3,7 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
   template: JST['questions/show'],
 
   events: {
-    "submit form#answer-form": "answerNew"
+    "submit form#new-answer": "answerNew"
   },
 
   initialize: function(params) {

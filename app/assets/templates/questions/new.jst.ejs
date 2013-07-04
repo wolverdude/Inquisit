@@ -1,0 +1,25 @@
+<h2>Add Question</h2>
+
+<form action="/questions" method="post"
+  accept-charset="utf-8" id="new-question">
+
+  <!-- <label for="question_topic">Topic</label>
+  <input type="text" name="question[topic]" value="" required
+    id="question_topic" placeholder="Select Topic" /> -->
+
+  <label for="question_title">Question</label>
+  <input type="text" name="question[title]" value="" required
+    id="question_title" placeholder="Type Question Here" />
+
+  <label for="question_description">Details</label>
+  <input type="text" name="question[description]" value=""
+    id="question_description"
+    placeholder="Optional: Provide more details about your question" />
+
+  <label for="question_anonymous">Add Anonymously</label>
+  <input type="checkbox" name="question[anonymous]" value="true"
+    id="question_anonymous" />
+
+  <input type="submit" value="Add Question" />
+
+</form>

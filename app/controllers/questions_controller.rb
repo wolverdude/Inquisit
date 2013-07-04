@@ -1,7 +1,12 @@
 class QuestionsController < ApplicationController
 
   def create
-    current_user.questions.build(params[:question])
+    @question = current_user.questions.build(params[:question])
+    if @question.save
+      render "show"
+    else
+      render :json => @question.errors.full_messages, :status => 422
+    end
   end
 
   def destroy
