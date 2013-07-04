@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130703004957) do
+ActiveRecord::Schema.define(:version => 20130704181044) do
 
   create_table "answers", :force => true do |t|
     t.text     "text",                           :null => false
@@ -26,14 +26,30 @@ ActiveRecord::Schema.define(:version => 20130703004957) do
   add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
 
   create_table "questions", :force => true do |t|
-    t.string   "title",       :null => false
+    t.string   "title",                          :null => false
     t.text     "description"
     t.integer  "asker_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "anonymous",   :default => false
   end
 
   add_index "questions", ["asker_id"], :name => "index_questions_on_asker_id"
+
+  create_table "questions_topics", :id => false, :force => true do |t|
+    t.integer "question_id", :null => false
+    t.integer "topic_id",    :null => false
+  end
+
+  add_index "questions_topics", ["question_id"], :name => "index_questions_topics_on_question_id"
+  add_index "questions_topics", ["topic_id"], :name => "index_questions_topics_on_topic_id"
+
+  create_table "topics", :force => true do |t|
+    t.string   "title",       :null => false
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
