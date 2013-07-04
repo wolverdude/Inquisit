@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
   def create
-
+    current_user.questions.build(params[:question])
   end
 
   def destroy
@@ -9,13 +9,14 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    render :json => Question.all
+    @questions = Question.all
+    render "index"
   end
 
   def show
-    question = Question.where(:id => params[:id]).includes(:answers).first
-    if question
-      render :json => question.to_json(:include => :answers)
+    @question = Question.includes(:answers => :user).find(params[:id])
+    if @question
+      render "show"
     else
       render :json => "question not found", :status => :not_found
     end

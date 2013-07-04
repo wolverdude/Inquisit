@@ -10,7 +10,14 @@ class AnswersController < ApplicationController
   end
 
   def create
+    params[:answer][:question_id] = params[:question_id]
+    @answer = current_user.build(params[:answer])
 
+    if @answer.save
+      render "show"
+    else
+      render :json => @answer.errors.full_messages, :status => 422
+    end
   end
 
   def update

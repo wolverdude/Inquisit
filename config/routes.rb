@@ -4,10 +4,11 @@ Clonora::Application.routes.draw do
   match "index" => "root#index"
 
   devise_for :users
+  resources :users, :only => [:show]
 
-  resources :questions, :except => [:edit, :new] do
-    resource :answer, :only => [:create]
-  end
   resources :answers, :except => [:create, :edit, :new]
+  resources :questions, :except => [:edit, :new] do
+    resources :answers, :only => [:create]
+  end
 
 end
