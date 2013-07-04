@@ -11,7 +11,7 @@ class AnswersController < ApplicationController
 
   def create
     params[:answer][:question_id] = params[:question_id]
-    @answer = current_user.build(params[:answer])
+    @answer = current_user.answers.build(params[:answer])
 
     if @answer.save
       render "show"

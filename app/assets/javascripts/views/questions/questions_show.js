@@ -8,10 +8,11 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
 
   initialize: function(params) {
     _.extend(this, params);
+    this.listenTo(this.question.get('answers'), 'all', this.render);
   },
 
   render: function() {
-    renderedContent = this.template({
+    var renderedContent = this.template({
       question: this.question
     });
 
@@ -23,8 +24,10 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
     event.preventDefault();
     var $form = $(event.target)
 
-    var answer = new Clonora.Models.Answer($form.serializeJSON().answer);
-    answer.save({url: $form.attr('action')})
+    this.question.get('answers').create(
+      $form.serializeJSON().answer,
+      {url: $form.attr('action'), wait: true}
+    );
   }
 
 });

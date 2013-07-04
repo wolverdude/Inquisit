@@ -12,7 +12,9 @@ window.Clonora = {
     // include csrf token with every AJAX call
     var csrfToken = $('meta[name=csrf-token]').attr('content')
     $(document).ajaxSend(function(event, xhr, options) {
-      console.log(xhr);
+      if (options.type !== "GET") {
+        xhr.setRequestHeader("X-CSRF-Token", csrfToken);
+      }
     });
 
     Clonora.user = data.user;
