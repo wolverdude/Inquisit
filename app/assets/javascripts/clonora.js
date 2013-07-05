@@ -5,8 +5,8 @@ window.Clonora = {
   Routers: {},
   initialize: function() {
     // get bootstrapped data
-    $currentUserEl = $('script#bootstrap-current-user');
-    $questionsEl = $('script#bootstrap-questions');
+    var $currentUserEl = $('script#bootstrap-current-user');
+    var $questionsEl = $('script#bootstrap-questions');
 
     var currentUserData = JSON.parse($currentUserEl.html());
     var questionsData = JSON.parse($questionsEl.html());
