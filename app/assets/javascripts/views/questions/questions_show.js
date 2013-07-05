@@ -13,10 +13,22 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
 
   render: function() {
     var renderedContent = this.template({
+      currentUser: Clonora.currentUser,
       question: this.question
     });
 
     this.$el.html(renderedContent);
+
+    var $answerList = this.$el.find('ul#answer-list')
+
+    this.question.get('answers').each(function(answer) {
+      var view = new Clonora.Views.AnswersShow({
+        answer: answer
+      });
+
+      $answerList.append(view.render().$el)
+    });
+
     return this;
   },
 

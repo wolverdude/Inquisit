@@ -1,6 +1,11 @@
-<%= render :partial => "navbar" %>
+<div class="container">
+  <%= render :partial => "navbar" %>
 
-<div id="content"></div>
+  <div class="row">
+    <div class="span8" id="content"></div>
+    <div class="span4" id="sidebar"></div>
+  </div>
+</div>
 
 <script type="application/json" id="bootstrap-current-user">
   <%= render(:file => "users/show").html_safe %>

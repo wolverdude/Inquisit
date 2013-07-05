@@ -1,39 +1,55 @@
-<label>Topics:</label>
-<ul>
-  <% console.log(question); %>
-  <% question.get('topics').each(function(topic) { %>
-    <li><a href="#/topics/<%= topic.id %>"><%= topic.escape('title') %></a></li>
-  <% }); %>
-</ul>
+<div class="row-fluid">
+  <div class="span1"></div>
 
-<h3><%= question.escape('title') %></h3>
-<p><%= question.escape('description') %></p>
+  <div class="span11" id="question-block">
 
-<h4><%= question.get('answers').length %> Answers</h4>
-
-<form action="/questions/<%= question.id %>/answers"
-      method="get" accept-charset="utf-8" id="new-answer">
-  <textarea name="answer[text]" placeholder="Add your answer"></textarea>
-  <br />
-  <input type="submit" value="Add answer" />
-</form>
-
-<ul>
-  <% question.get('answers').each(function(answer) { %>
-    <% var user = answer.get('user') %>
-    <li>
-      <% if (user) { %>
-        <% var bio = (user.get('bio')) ? ", " + user.escape('bio') : "" %>
-        <label>
-          <a href = "#/users/<%= user.id %>">
-            <%= user.escape('name') %></a><%= bio %>
-        </label>
-      <% } else { %>
-        <label>Anonymous</label>
+    <ul class="inline">
+      <li>Topics:</li>
+      <% if (question.get('topics').isEmpty()) { %>
+        <li>none</li>
       <% } %>
-      <%= answer.escape('text') %>
-    </li>
-    <br />
-  <% }); %>
-</ul>
+      <% question.get('topics').each(function(topic) { %>
+        <li><a href="#/topics/<%= topic.id %>">
+          <%= topic.escape('title') %>
+        </a></li>
+      <% }); %>
+    </ul>
 
+    <h4><%= question.escape('title') %></h4>
+    <p><%= question.escape('description') %></p>
+
+    <hr />
+    <p><strong><%= question.get('answers').length %> Answers</strong></p>
+
+  </div>
+</div>
+
+<div class="row-fluid" id="answer-form">
+  <div class="span1"></div>
+
+  <div class="span10">
+    <p><strong>
+      <% if (currentUser.get("anonymous")) { %>
+        Anonymous
+      <% } else { %>
+        <a href = "#/users/<%= currentUser.id %>">
+          <%= currentUser.escape("name")%></a>,
+        <%= currentUser.escape("bio") %>
+      <% } %>
+    </strong></p>
+
+    <form action="/questions/<%= question.id %>/answers"
+          method="get" accept-charset="utf-8" id="new-answer">
+      <fieldset>
+        <textarea name="answer[text]" placeholder="Add your answer"
+          class="textarea"></textarea>
+        <br />
+        <button type="submit" class="btn-primary">Add Answer</button>
+      </fieldset>
+    </form>
+
+    <div class="span1"></div>
+  </div>
+</div>
+
+<ul class="unstyled" id="answer-list"></ul>

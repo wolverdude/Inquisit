@@ -8,9 +8,52 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
+ *= require bootstrap
  *= require_self
  *= require_tree .
  */
+
+body {
+  padding-top: 65px;
+  background-color: #dfeaf4;
+}
+
+hr {
+  border-top-color: #c0c0c0;
+}
+
+textarea.textarea {
+  width: 100%;
+}
+
+a.rate-btn {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-repeat: no-repeat;
+  background-position: left top;
+  clear: right;
+  float: right;
+  height: 17px;
+  margin-bottom: 1px;
+  width: 20px;
+}
+
+a.rate-btn:hover {
+  background-color: #19558d;
+  text-decoration: none;
+  background-position: left center;
+}
+
+a.rate-up {
+  background-image: url(
+    http://d1vgw4v7ja2ido.cloudfront.net/-7db7b7475aae5787.gif);
+}
+
+a.rate-down {
+  background-image: url(
+    http://d1vgw4v7ja2ido.cloudfront.net/-586a902693ebbe64.gif);
+}
 
 #logo {
   background-color: #a82400;

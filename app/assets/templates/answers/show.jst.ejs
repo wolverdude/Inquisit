@@ -1,0 +1,27 @@
+<div class="span1">
+  <div class="pull-right">
+    <a href="#/answers/<%= answer.id %>/upvote" class="rate-btn rate-up">
+      &nbsp;
+    </a>
+    <br />
+    <a href="#/answers/<%= answer.id %>/downvote" class="rate-btn rate-down">
+      &nbsp;
+    </a>
+  </div>
+</div>
+
+<div class="span10">
+  <p><strong>
+    <% if (user) { %>
+      <a href = "#/users/<%= user.id %>">
+        <%= user.escape("name")%></a>,
+      <%= user.escape("bio") %>
+    <% } else { %>
+      Anonymous
+    <% } %>
+  </strong></p>
+  <p><%= answer.escape('text') %></p>
+</div>
+
+<div class="span1"></div>
+<br />

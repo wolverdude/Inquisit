@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Clonora</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -17,8 +18,8 @@
     <h3>Clonora</h3>
   </div>
   <div class="modal-body">
-    <p class="notice"><strong><%= notice %></strong></p>
-    <p class="alert"><strong><%= alert %></strong></p>
+    <p><strong class="notice"><%= notice %></strong></p>
+    <p><strong class="alert"><%= alert %></strong></p>
   </div>
   <div class="modal-footer">
     <button class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
@@ -26,8 +27,8 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-  if ( $('.notice').html() !== "" || $('.alert') !== "" ) {
-    $('#alert-modal').modal()
+  if ( $('.notice').html() !== "" || $('.alert').html() !== "" ) {
+    $('#alert-modal').modal('show')
   }
 </script>
 

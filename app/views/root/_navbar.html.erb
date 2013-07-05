@@ -1,4 +1,4 @@
-<div class="navbar navbar-fixed-top">
+<div class="navbar navbar-fixed-top" id="navbar">
   <div class="navbar-inner">
     <div class="container">
       <ul class="nav">
@@ -13,18 +13,18 @@
       <ul class="nav pull-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Write
+            <strong>Write</strong>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="#/questions/new">Add Question</a></li>
-            <li><a href="#">Answer Questions</a></li>
+            <li><a tabindex="-1" href="#/questions/new">Add Question</a></li>
+            <li><a tabindex="-1" href="#">Answer Questions</a></li>
           </ul>
         </li>
-        <li><a href="#">Home</a></li>
+        <li><a href="#"><strong>Home</strong></a></li>
         <% if user_signed_in? %>
           <%= render :partial => "user_menu" %>
         <% else %>
-          <%= link_to "Login", new_user_session_path %>
+          <strong><%= link_to "Login", new_user_session_path %></strong>
         <% end %>
       </ul>
     </div>
