@@ -13,10 +13,13 @@
           <%= topic.escape('title') %>
         </a></li>
       <% }); %>
+      <li><a href="#" class="btn-edit" id="edit-topics">Edit</a></li>
     </ul>
 
-    <h4><%= question.escape('title') %></h4>
-    <p><%= question.escape('description') %></p>
+    <h4><%= question.escape('title') %>
+      <a href="#" class="btn-edit" class="edit-title">Edit</a></h4>
+    <p><%= question.escape('description') %>
+      <a href="#" class="btn-edit" ic="edit-description">Edit</a></p>
 
     <hr />
     <p><strong><%= question.get('answers').length %> Answers</strong></p>
@@ -44,7 +47,7 @@
         <textarea name="answer[text]" placeholder="Add your answer"
           class="textarea"></textarea>
         <br />
-        <button type="submit" class="btn-primary">Add Answer</button>
+        <button type="submit" class="btn-primary pull-right">Add Answer</button>
       </fieldset>
     </form>
 

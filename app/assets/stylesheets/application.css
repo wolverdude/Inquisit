@@ -20,13 +20,28 @@ body {
 
 hr {
   border-top-color: #c0c0c0;
+  margin-top: 0px;
+  margin-bottom: 8px;
 }
 
 textarea.textarea {
   width: 100%;
 }
 
-a.rate-btn {
+a.btn-edit { /* these styles hoisted directly from Quora's site */
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background: no-repeat left center
+    url(//d1vgw4v7ja2ido.cloudfront.net/-71768c4d60e467f5.gif);
+  font-size: 11px;
+  font-weight: normal;
+  letter-spacing: 0;
+  margin-left: 3px;
+  padding: 2px 6px 1px 18px;
+}
+
+.rate-btns a { /* these styles hoisted directly from Quora's site */
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
@@ -39,20 +54,20 @@ a.rate-btn {
   width: 20px;
 }
 
-a.rate-btn:hover {
+.rate-btns a:hover {
   background-color: #19558d;
   text-decoration: none;
   background-position: left center;
 }
 
-a.rate-up {
-  background-image: url(
-    http://d1vgw4v7ja2ido.cloudfront.net/-7db7b7475aae5787.gif);
+.rate-btns a.rate-up {
+  background-image:
+    url(http://d1vgw4v7ja2ido.cloudfront.net/-7db7b7475aae5787.gif);
 }
 
 a.rate-down {
-  background-image: url(
-    http://d1vgw4v7ja2ido.cloudfront.net/-586a902693ebbe64.gif);
+  background-image:
+    url(http://d1vgw4v7ja2ido.cloudfront.net/-586a902693ebbe64.gif);
 }
 
 #logo {

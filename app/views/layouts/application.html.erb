@@ -9,21 +9,26 @@
 </head>
 <body>
 
-<!-- modal dialogue for site messages -->
-<div class="modal hide fade" id="alert-modal">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-      &times;
-    </button>
-    <h3>Clonora</h3>
+<div class="container">
+
+  <!-- modal dialogue for site messages -->
+  <div class="modal hide fade" id="alert-modal">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal"
+        aria-hidden="true">&times;</button>
+      <h3>Clonora</h3>
+    </div>
+    <div class="modal-body">
+      <p><strong class="notice"><%= notice %></strong></p>
+      <p><strong class="alert"><%= alert %></strong></p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+    </div>
   </div>
-  <div class="modal-body">
-    <p><strong class="notice"><%= notice %></strong></p>
-    <p><strong class="alert"><%= alert %></strong></p>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
-  </div>
+
+  <%= yield %>
+
 </div>
 
 <script type="text/javascript" charset="utf-8">
@@ -32,8 +37,5 @@
   }
 </script>
 
-<%= yield %>
-
 </body>
 </html>
-

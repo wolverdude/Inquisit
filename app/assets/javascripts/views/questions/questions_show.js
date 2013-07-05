@@ -3,6 +3,9 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
   template: JST['questions/show'],
 
   events: {
+    "click a#edit-topics": "editTopics",
+    "click a#edit-title": "editTitle",
+    "clidk a#edit-descirption": "editDescription",
     "submit form#new-answer": "answerNew"
   },
 
@@ -40,6 +43,10 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
       $form.serializeJSON().answer,
       {url: $form.attr('action'), wait: true}
     );
+  },
+
+  editTitle: function(event) {
+    this.question.escape('title')
   }
 
 });
