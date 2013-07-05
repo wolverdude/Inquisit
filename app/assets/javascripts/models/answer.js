@@ -1,12 +1,17 @@
-Clonora.Models.Answer = Backbone.Model.extend({
+Clonora.Models.Answer = Backbone.RelationalModel.extend({
+
+  relations: [{
+    type: Backbone.HasOne,
+    key: 'user',
+    relatedModel: "Clonora.Models.User",
+    includeInJSON: false
+  }],
 
   urlRoot: "/answers",
 
   parse: function(resp) {
-    var parsedResp = _.clone(resp.answer);
-    parsedResp.user = new Clonora.Models.User(
-      parsedResp.user, {parse: true});
-    return parsedResp;
+    console.log(resp)
+    return resp.answer;
   }
 
 });

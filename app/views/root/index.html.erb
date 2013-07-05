@@ -2,6 +2,10 @@
 
 <div id="content"></div>
 
-<script type="application/json" id="bootstrap">
-  <%= {user: @user, questions: @questions}.to_json.html_safe %>
+<script type="application/json" id="bootstrap-current-user">
+  <%= render(:file => "users/show").html_safe %>
+</script>
+
+<script type="application/json" id="bootstrap-questions">
+  <%= render(:file => "questions/index").html_safe %>
 </script>

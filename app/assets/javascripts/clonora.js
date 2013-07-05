@@ -5,9 +5,21 @@ window.Clonora = {
   Routers: {},
   initialize: function() {
     // get bootstrapped data
-    $dataEl = $('#bootstrap');
-    var data = JSON.parse($dataEl.html());
-    $dataEl.remove();
+    $currentUserEl = $('script#bootstrap-current-user');
+    $questionsEl = $('script#bootstrap-questions');
+
+    var currentUserData = JSON.parse($currentUserEl.html());
+    var questionsData = JSON.parse($questionsEl.html());
+
+    $currentUserEl.remove();
+    $questionsEl.remove();
+
+    Clonora.currentUser = new Clonora.Models.User(
+      currentUserData, {parse: true}
+    );
+    Clonora.questions = new Clonora.Collections.Questions(
+      questionsData, {parse: true}
+    );
 
     // include csrf token with every AJAX call
     var csrfToken = $('meta[name=csrf-token]').attr('content')
@@ -17,9 +29,8 @@ window.Clonora = {
       }
     });
 
-    Clonora.user = data.user;
-    Clonora.questions = new Clonora.Collections.Questions(data.questions);
-    new Clonora.Routers.Questions({
+    // start router
+    Clonora.questionsRouter = new Clonora.Routers.Questions({
       $el: $('#content')
     });
     Backbone.history.start();

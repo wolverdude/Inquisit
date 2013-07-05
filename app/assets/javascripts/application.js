@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require backbone-relational
 //
 //= require clonora
 //= require_tree ../templates

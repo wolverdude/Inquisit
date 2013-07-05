@@ -4,7 +4,7 @@ Clonora.Routers.Questions = Backbone.Router.extend({
     "": "index",
     "index": "index",
     "questions/new": "new",
-    "questions/:cid": "show"
+    "questions/:id": "show"
   },
 
   initialize: function(params) {
@@ -23,9 +23,9 @@ Clonora.Routers.Questions = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  show: function(cid) {
+  show: function(id) {
     var that = this
-    var question = Clonora.questions.get(cid);
+    var question = Clonora.questions.get(id);
 
     question.fetch({
       success: function() {

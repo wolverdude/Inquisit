@@ -1,5 +1,5 @@
 object @answer
 attributes *Answer.column_names
 child :user do
-  attributes :id, :name
+  extends "users/show"
 end

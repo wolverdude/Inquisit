@@ -16,7 +16,15 @@
     <li>
       <%= answer.escape('text') %>
       <br />
-      --<a href = "#/users/<%= user.id %>"><%= user.escape('name') %></a>
+      <% if (user) { %>
+        <% var bio = (user.get('bio')) ? ", " + user.escape('bio') : "" %>
+        <label>
+          --<a href = "#/users/<%= user.id %>">
+            <%= user.escape('name') %></a><%= bio %>
+        </label>
+      <% } else { %>
+        <label>--anonymous</label>
+      <% } %>
     </li>
   <% }); %>
 </ul>
