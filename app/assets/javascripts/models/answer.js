@@ -10,7 +10,6 @@ Clonora.Models.Answer = Backbone.RelationalModel.extend({
   urlRoot: "/answers",
 
   parse: function(resp) {
-    console.log(resp)
     return resp.answer;
   }
 

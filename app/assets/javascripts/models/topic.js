@@ -8,6 +8,10 @@ Clonora.Models.Topic = Backbone.RelationalModel.extend({
     parse: true
   }],
 
-  urlRoot: "/topics"
+  urlRoot: "/topics",
+
+  parse: function(resp) {
+    return resp.topic
+  }
 
 });
