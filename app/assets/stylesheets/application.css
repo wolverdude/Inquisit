@@ -81,3 +81,10 @@ a.rate-down {
 #logo:active {
   background-color: #801b00;
 }
+
+#question_title {
+  line-height: 20px;
+  font-size: 17.5px;
+  font-weight: bold;
+  color: inherit;
+}

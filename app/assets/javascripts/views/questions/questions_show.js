@@ -4,8 +4,13 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
 
   events: {
     "click a#edit-topics": "editTopics",
+
     "click a#edit-title": "editTitle",
+    "click #title button.cancel": "showTitle",
+    "submit #title form": "submitTitle",
+
     "clidk a#edit-descirption": "editDescription",
+
     "submit form#new-answer": "answerNew"
   },
 
@@ -22,14 +27,23 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
 
     this.$el.html(renderedContent);
 
-    var $answerList = this.$el.find('ul#answer-list')
+    var $topics = this.$el.find('div#topic-list');
 
+     var $title = this.$el.find('div#title');
+    this.titleView = new Clonora.Views.QuestionsShow.Title({
+      question: this.question
+    });
+    $title.html(this.titleView.renderShow().$el)
+
+    var $description = this.$el.find('div#description');
+
+    var $answerList = this.$el.find('ul#answer-list');
     this.question.get('answers').each(function(answer) {
-      var view = new Clonora.Views.AnswersShow({
+      var questionView = new Clonora.Views.AnswersShow({
         answer: answer
       });
 
-      $answerList.append(view.render().$el)
+      $answerList.append(questionView.render().$el);
     });
 
     return this;
@@ -45,8 +59,27 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
     );
   },
 
+  showTitle: function(event) {
+    event.preventDefault();
+    this.titleView.renderShow();
+  },
+
   editTitle: function(event) {
-    this.question.escape('title')
+    event.preventDefault();
+    this.titleView.renderEdit();
+  },
+
+  submitTitle: function(event) {
+    event.preventDefault();
+    var $form = $(event.target);
+
+    var that = this;
+    this.question.save($form.serializeJSON(), {
+      success: function() {
+        that.titleView.renderShow();
+      },
+      wait: true
+    });
   }
 
 });
