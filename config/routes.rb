@@ -9,6 +9,7 @@ Clonora::Application.routes.draw do
   resources :answers, :except => [:create, :edit, :new]
   resources :questions, :except => [:edit, :new] do
     resources :answers, :only => [:create]
+    resources :topics, :only => [:create, :update]
   end
   resources :topics, :except => [:edit, :new] do
     resources :questions, :only => [:create]

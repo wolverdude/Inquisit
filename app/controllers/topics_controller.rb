@@ -1,11 +1,19 @@
 class TopicsController < ApplicationController
 
   def create
-    @topic = Topic.new(params[:topic])
-    if @topic.save
+    if @topic = Topic.find_by_title(params[:topic][:title])
       render "show"
     else
-      render :json => @topic.errors.full_messages, :status => 422
+      @topic = Topic.new(params[:topic])
+      if @topic.save
+        render "show"
+      else
+        render :json => @topic.errors.full_messages, :status => 422
+      end
+    end
+    if params[:question_id]
+      question = Question.find(params[:question_id])
+      @topic.questions <<= question
     end
   end
 
@@ -29,6 +37,10 @@ class TopicsController < ApplicationController
       render "show"
     else
       render :json => @topic.errors.full_messages, :status => 422
+    end
+    if params[:question_id]
+      question = Question.find(params[:question_id])
+      @topic.questions <<= question
     end
   end
 

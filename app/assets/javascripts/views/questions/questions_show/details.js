@@ -1,7 +1,7 @@
-Clonora.Views.QuestionsShow.Title = Clonora.Views.ShowEditSubView.extend({
+Clonora.Views.QuestionsShow.Details = Clonora.Views.ShowEditSubView.extend({
 
-  showTemplate: JST['questions/show/title_show'],
-  editTemplate: JST['questions/show/title_edit'],
+  showTemplate: JST['questions/show/details_show'],
+  editTemplate: JST['questions/show/details_edit'],
 
   events: {
     "click a.btn-edit": "eventEdit",

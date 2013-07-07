@@ -15,7 +15,6 @@
 
 body {
   padding-top: 65px;
-  background-color: #dfeaf4;
 }
 
 hr {
@@ -26,6 +25,33 @@ hr {
 
 textarea.textarea {
   width: 100%;
+}
+
+li.topic-list-item { /* these styles hoisted directly from Quora's site */
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #dfeaf4;
+  margin: 0 3px 3px 0;
+}
+
+a.remove-topic {
+  font-weight: bold;
+
+  /* these styles hoisted directly from Quora's site */
+  color: #19558d;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  height: 18px;
+  width: 15px;
+  padding: 0;
+}
+
+a.remove-topic:hover {
+  text-decoration: none;
+  color: #dfeaf4;
+  background-color: #19558d;
 }
 
 a.btn-edit { /* these styles hoisted directly from Quora's site */

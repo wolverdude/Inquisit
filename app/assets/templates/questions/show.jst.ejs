@@ -3,23 +3,9 @@
 
   <div class="span11" id="question-block">
 
-    <ul class="inline">
-      <li>Topics:</li>
-      <% if (question.get('topics').isEmpty()) { %>
-        <li>none</li>
-      <% } %>
-      <% question.get('topics').each(function(topic) { %>
-        <li><a href="#/topics/<%= topic.id %>">
-          <%= topic.escape('title') %>
-        </a></li>
-      <% }); %>
-      <li><a href="#" class="btn-edit" id="edit-topics">Edit</a></li>
-    </ul>
-
+    <div id="topics"></div>
     <div id="title"></div>
-    <div id="description"></div>
-    <p><%= question.escape('description') %>
-      <a href="#" class="btn-edit" ic="edit-description">Edit</a></p>
+    <div id="details"></div>
 
     <hr />
     <p><strong><%= question.get('answers').length %> Answers</strong></p>
@@ -55,4 +41,4 @@
   </div>
 </div>
 
-<ul class="unstyled" id="answer-list"></ul>
+<ul class="unstyled" id="answers-list"></ul>

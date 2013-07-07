@@ -6,6 +6,7 @@ Clonora.Models.Question = Backbone.RelationalModel.extend({
     relatedModel: "Clonora.Models.Topic",
     collectionType: Clonora.Collections.Topics,
     includeInJSON: 'id',
+    keyDestination: 'topic_ids',
     parse: true
   },{
     type: Backbone.HasMany,
@@ -31,6 +32,5 @@ Clonora.Models.Question = Backbone.RelationalModel.extend({
   parse: function(resp) {
     return resp.question;
   }
-
 
 });

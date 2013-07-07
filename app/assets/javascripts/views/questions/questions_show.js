@@ -3,15 +3,7 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
   template: JST['questions/show'],
 
   events: {
-    "click a#edit-topics": "editTopics",
-
-    "click a#edit-title": "editTitle",
-    "click #title button.cancel": "showTitle",
-    "submit #title form": "submitTitle",
-
-    "clidk a#edit-descirption": "editDescription",
-
-    "submit form#new-answer": "answerNew"
+    "submit form#new-answer": "newAnswer"
   },
 
   initialize: function(params) {
@@ -20,6 +12,8 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
   },
 
   render: function() {
+    var that = this;
+
     var renderedContent = this.template({
       currentUser: Clonora.currentUser,
       question: this.question
@@ -27,29 +21,33 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
 
     this.$el.html(renderedContent);
 
-    var $topics = this.$el.find('div#topic-list');
-
-     var $title = this.$el.find('div#title');
-    this.titleView = new Clonora.Views.QuestionsShow.Title({
-      question: this.question
+    _([
+      ['div#topics', Clonora.Views.QuestionsShow.Topics],
+      ['div#title', Clonora.Views.QuestionsShow.Title],
+      ['div#details', Clonora.Views.QuestionsShow.Details]
+    ]).each(function(subViewParams) {
+      that._addSubView.apply(that, subViewParams)
     });
-    $title.html(this.titleView.renderShow().$el)
 
-    var $description = this.$el.find('div#description');
-
-    var $answerList = this.$el.find('ul#answer-list');
+    var $answerList = this.$el.find('ul#answers-list');
     this.question.get('answers').each(function(answer) {
-      var questionView = new Clonora.Views.AnswersShow({
+      var answerView = new Clonora.Views.AnswersShow({
         answer: answer
       });
 
-      $answerList.append(questionView.render().$el);
+      $answerList.append(answerView.render().$el);
     });
 
     return this;
   },
 
-  answerNew: function(event) {
+  close: function() {
+    this.subViews.each(function(subView) {
+      subView.remove();
+    })
+  },
+
+  newAnswer: function(event) {
     event.preventDefault();
     var $form = $(event.target)
 
@@ -59,27 +57,14 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
     );
   },
 
-  showTitle: function(event) {
-    event.preventDefault();
-    this.titleView.renderShow();
-  },
+  _addSubView: function(cssSelector, View) {
+    this.subViews || ( this.subViews = _([]) )
 
-  editTitle: function(event) {
-    event.preventDefault();
-    this.titleView.renderEdit();
-  },
+    var $el = this.$el.find(cssSelector);
+    view = new View({question: this.question});
+    $el.html(view.renderShow().$el);
 
-  submitTitle: function(event) {
-    event.preventDefault();
-    var $form = $(event.target);
-
-    var that = this;
-    this.question.save($form.serializeJSON(), {
-      success: function() {
-        that.titleView.renderShow();
-      },
-      wait: true
-    });
+    this.subViews.push(view)
+    return view;
   }
-
 });
