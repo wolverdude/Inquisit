@@ -1,4 +1,7 @@
+<% var details = question.escape('description') %>
 <p>
-  <%= question.escape('description') %>
-  <a href="#" class="btn-edit" id="edit-description">Edit</a>
+  <%= details %>
+  <a href="#" class="btn-edit" id="edit-details">
+    <%= (details) ? "Edit" : "Add Question Details." %>
+  </a>
 </p>

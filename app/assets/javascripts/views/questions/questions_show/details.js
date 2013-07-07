@@ -9,6 +9,11 @@ Clonora.Views.QuestionsShow.Details = Clonora.Views.ShowEditSubView.extend({
     "submit form": "eventSubmit",
   },
 
+  initialize: function(binding) {
+    _.extend(this, binding);
+    this.binding = binding;
+  },
+
   eventSubmit: function(event) {
     event.preventDefault();
     var $form = $(event.target);

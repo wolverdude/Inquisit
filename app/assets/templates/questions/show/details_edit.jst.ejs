@@ -1,12 +1,10 @@
 <form action="#" method="get" accept-charset="utf-8">
-  <formset>
-  <input type="text" name="question[title]" id="question_title"
-    value="<%= question.get('title') %>" />
-
-  <button type="button" class="btn cancel">Cancel</button>
-  <input type="submit" value="Update" class="btn-primary" />
-  </formset>
+  <fieldset>
+    <textarea name="question[description]"
+      class="textarea"><%= question.escape('description') %></textarea>
+    <div class="pull-right">
+      <button type="button" class="btn cancel">Cancel</button>
+      <input type="submit" value="Update" class="btn-primary" />
+    </div>
+  </fieldset>
 </form>
-
-<%= question.escape('title') %>
-<a href="#" class="btn-edit" class="edit-title">Edit</a>

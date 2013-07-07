@@ -8,7 +8,11 @@
     <div id="details"></div>
 
     <hr />
-    <p><strong><%= question.get('answers').length %> Answers</strong></p>
+    <% var answersCount = question.get('answers').length %>
+    <p><strong>
+      <%= answersCount %>
+      <%= answersCount === 1 ? "Answer" : "Answers" %>
+    </strong></p>
 
   </div>
 </div>
@@ -21,8 +25,9 @@
       <% if (currentUser.get("anonymous")) { %>
         Anonymous
       <% } else { %>
-        <a href = "#/users/<%= currentUser.id %>">
-          <%= currentUser.escape("name")%></a>,
+        <% comma = (currentUser.get("bio")) ? "," : "" %>
+        <a href = "#/users/<%= currentUser.id %>" class="user-link">
+          <%= currentUser.escape("name")%></a><%= comma %>
         <%= currentUser.escape("bio") %>
       <% } %>
     </strong></p>

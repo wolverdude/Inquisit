@@ -13,8 +13,9 @@
 <div class="span10">
   <p><strong>
     <% if (user) { %>
-      <a href = "#/users/<%= user.id %>">
-        <%= user.escape("name")%></a>,
+      <% comma = (user.get("bio")) ? "," : "" %>
+      <a href = "#/users/<%= user.id %>" class="user-link">
+        <%= user.escape("name")%></a><%= comma %>
       <%= user.escape("bio") %>
     <% } else { %>
       Anonymous
