@@ -14,7 +14,7 @@
  */
 
 body {
-  padding-top: 65px;
+  padding-top: 40px;
   color: #333;
 }
 
@@ -34,6 +34,21 @@ hr {
 
 textarea.textarea {
   width: 100%;
+}
+
+#site-messages .accordion-body {
+  float: left;
+  margin-left: 1em;
+}
+
+#site-notice {
+  color: #333;
+  background-color: inherit;
+  border-color: #d4d4d4;
+}
+
+#page-content {
+  clear: both;
 }
 
 li.topic-list-item { /* these styles hoisted directly from Quora's site */

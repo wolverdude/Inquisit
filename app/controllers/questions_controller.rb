@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  respond_to :json
 
   def create
     @question = current_user.questions.build(params[:question])

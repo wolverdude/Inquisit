@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+  respond_to :json
 
   def create
     params[:answer][:question_id] = params[:question_id]

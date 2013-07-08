@@ -11,31 +11,49 @@
 
 <div class="container">
 
-  <!-- modal dialogue for alert messages -->
-  <div class="modal hide fade" id="alert-modal">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal"
-        aria-hidden="true">&times;</button>
-      <h3>Clonora</h3>
+  <!-- collapsing div for site messages -->
+  <div class="accordion" id="site-messages">
+    <div id="collapse-alert" class="accordion-body collapse">
+      <p class="alert" id="site-alert">
+        <strong><%= alert %></strong>
+        <a href="#collapse-alert" class="accordion-toggle"
+          data-toggle="collapse">dismiss</a>
+      </p>
     </div>
-    <div class="modal-body">
-      <p><strong class="alert"><%= alert %></strong></p>
-    </div>
-    <div class="modal-footer">
-      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+    <div id="collapse-notice" class="accordion-body collapse">
+      <p class="alert" id="site-notice">
+        <strong><%= notice %></strong>
+        <a href="#collapse-notice" class="accordion-toggle"
+          data-toggle="collapse">dismiss</a>
+      </p>
     </div>
   </div>
 
-  <p><strong class="notice"><%= notice %></strong></p>
-
-  <%= yield %>
+  <div id="page-content">
+    <%= yield %>
+  </div>
 
 </div>
 
 <script type="text/javascript" charset="utf-8">
-  if ( $('.alert').html() !== "" ) {
-    $('#alert-modal').modal('show')
+  Clonora.showSiteMessage = function(cssSelector, timeout) {
+    var $el = $(cssSelector);
+    $el.addClass('in');
+
+    if (timeout) {
+      window.setTimeout(function() {
+        $el.collapse('hide');
+      }, timeout);
+    }
   }
+
+  <% if alert %>
+    Clonora.showSiteMessage("#collapse-alert");
+  <% end %>
+  <% if notice %>
+    Clonora.showSiteMessage("#collapse-notice", 2500);
+  <% end %>
+
 </script>
 
 </body>

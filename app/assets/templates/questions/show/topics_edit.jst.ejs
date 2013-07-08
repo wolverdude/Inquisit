@@ -5,13 +5,10 @@
   <% } %>
   <% question.get('topics').each(function(topic) { %>
     <li class="topic-list-item">
-      <a href="#/topics/<%= topic.id %>">
-        <%= topic.escape('title') %>
-      </a>
+      <a href="#/topics/<%= topic.id %>"><%= topic.escape('title') %></a>
       <a href="#" class="remove-topic" data-id="<%= topic.id %>">&times;</a>
     </li>
   <% }); %>
-  <li><a href="#" class="btn-edit" id="edit-topics">Edit</a></li>
 </ul>
 
 <form action="#" method="get" accept-charset="utf-8">
