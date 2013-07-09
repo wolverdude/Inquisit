@@ -134,6 +134,19 @@ a.btn-edit:hover {
   background-position: left center;
 }
 
+.answer-header {
+  line-height: 0.5em;
+}
+
+.vote-tally {
+  color: #666;
+  font-weight: bold;
+}
+
+.votes-info {
+  color: #999;
+}
+
 #logo {
   background-color: #a82400;
   color: white;

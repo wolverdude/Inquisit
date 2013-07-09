@@ -18,28 +18,28 @@ Clonora.Views.QuestionsShow.Topics = Clonora.Views.ShowEditSubView.extend({
 
   eventAddTopic: function(event) {
     event.preventDefault();
-    var topicParams = $(event.target).serializeJSON();
+    var topicData = $(event.target).serializeJSON();
 
-    if (this.topics.findWhere(topicParams.topic)) {
+    if (this.topics.findWhere(topicData.topic)) {
       this.renderEdit();
       return;
     }
 
-    var store = Backbone.Relational.store.getCollection(Clonora.Models.Topic);
-    var topic = store.findWhere(topicParams.topic);
-
     var that = this;
-    var options = {
-      urlRoot: "questions/" + this.question.id + "/topics",
+    $.ajax({
+      type: "POST",
+      url: "questions/" + this.question.id + "/topics",
+      data: topicData,
       wait: true,
-      success: function(topic) {
+      success: function(fetchedTopicData) {
+        var topic = Clonora.Models.Topic.findOrCreate(
+          fetchedTopicData,
+          {parse: true}
+        );
         that.topics.add(topic);
         that.renderEdit();
       }
-    }
-
-    topic || (topic = new Clonora.Models.Topic(topicParams));
-    topic.save({}, options);
+    });
   },
 
   eventRemoveTopic: function(event) {

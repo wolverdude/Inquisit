@@ -18,21 +18,23 @@
   </div>
 </div>
 
-<div class="span10">
-  <p><strong>
-    <% if (user) { %>
-      <% comma = (user.get("bio")) ? "," : "" %>
-      <a href = "#/users/<%= user.id %>" class="user-link">
-        <%= user.escape("name")%></a><%= comma %>
-      <%= user.escape("bio") %>
-    <% } else { %>
-      Anonymous
-    <% } %>
-  </strong></p>
-  <p>
-    <%= answer.escape('vote_tally') %>
-    <%= answer.escape('vote_tally') === 1 ? "vote" : "votes" %>
-  </p>
+<div class="span10 answer-area">
+  <div class="answer-header">
+    <p><strong>
+      <% if (user) { %>
+        <% comma = (user.get("bio")) ? "," : "" %>
+        <a href = "#/users/<%= user.id %>" class="user-link">
+          <%= user.escape("name")%></a><%= comma %>
+        <%= user.escape("bio") %>
+      <% } else { %>
+        Anonymous
+      <% } %>
+    </strong></p>
+    <p class="votes-info">
+      <span class="vote-tally"><%= answer.escape('vote_tally') %></span>
+      <%= answer.escape('vote_tally') === 1 ? "vote" : "votes" %>
+    </p>
+  </div>
   <p><%= answer.escape('text') %></p>
 </div>
 
