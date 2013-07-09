@@ -34,5 +34,4 @@ class AnswersController < ApplicationController
       render :json => @answer.errors.full_messages, :status => 422
     end
   end
-
 end

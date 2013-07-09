@@ -1,10 +1,18 @@
 <div class="span1">
-  <div class=rate-btns "pull-right">
-    <a href="#/answers/<%= answer.id %>/upvote" class="rate-up">
+  <div class="vote-btns pull-right">
+    <% if (answer.get("current_user_vote") > 0) { %>
+      <a href="/answers/<%= answer.id %>/unvote" class="unvote btn-up">
+    <% } else { %>
+      <a href="/answers/<%= answer.id %>/upvote" class="vote btn-up">
+    <% } %>
       &nbsp;
     </a>
     <br />
-    <a href="#/answers/<%= answer.id %>/downvote" class="rate-down">
+    <% if (answer.get("current_user_vote") < 0) { %>
+      <a href="/answers/<%= answer.id %>/unvote" class="unvote btn-down">
+    <% } else { %>
+      <a href="/answers/<%= answer.id %>/downvote" class="vote btn-down">
+    <% } %>
       &nbsp;
     </a>
   </div>
@@ -21,6 +29,10 @@
       Anonymous
     <% } %>
   </strong></p>
+  <p>
+    <%= answer.escape('vote_tally') %>
+    <%= answer.escape('vote_tally') === 1 ? "vote" : "votes" %>
+  </p>
   <p><%= answer.escape('text') %></p>
 </div>
 

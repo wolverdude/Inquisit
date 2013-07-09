@@ -7,8 +7,14 @@ class User < ActiveRecord::Base
 
   has_many :questions, :foreign_key => :asker_id
   has_many :answers
+  has_many :votes
+  has_many :voted_answers, :through => :votes, :source => :answer
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :bio
 
+  def get_vote_count(answer)
+    vote = self.votes.find_by_answer_id(answer.id)
+    vote.count if vote
+  end
 end

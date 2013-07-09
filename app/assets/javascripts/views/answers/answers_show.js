@@ -6,6 +6,12 @@ Clonora.Views.AnswersShow = Backbone.View.extend({
 
   initialize: function(params) {
     _.extend(this, params);
+    this.listenTo(this.answer, "change", this.render);
+  },
+
+  events: {
+    "click a.vote": "vote",
+    "click a.unvote": "unvote"
   },
 
   render: function() {
@@ -15,7 +21,29 @@ Clonora.Views.AnswersShow = Backbone.View.extend({
     });
 
     this.$el.addClass("row-fluid").html(renderedContent);
-    return this
+    return this;
+  },
+
+  vote: function(event) {
+    event.preventDefault();
+    var that = this;
+
+    $.ajax({
+      type: "POST",
+      url: $(event.target).attr('href'),
+      success: that.answer.fetch.bind(that.answer)
+    });
+  },
+
+  unvote: function(event) {
+    event.preventDefault();
+    var that = this;
+
+    $.ajax({
+      type: "DELETE",
+      url: $(event.target).attr('href'),
+      success: that.answer.fetch.bind(that.answer)
+    });
   }
 
 });
