@@ -8,7 +8,8 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
 
   initialize: function(params) {
     _.extend(this, params);
-    this.listenTo(this.question.get('answers'), 'all', this.render);
+    this.listenTo(this.question.get('answers'), 'add', this.render);
+    this.listenTo(this.question.get('answers'), 'remove', this.render);
   },
 
   render: function() {
@@ -23,8 +24,8 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
 
     _([
       ['div#topics', Clonora.Views.QuestionsShow.Topics],
-      ['div#title', Clonora.Views.QuestionsShow.Title],
-      ['div#details', Clonora.Views.QuestionsShow.Details]
+      ['div#title', Clonora.Views.Shared.Title],
+      ['div#details', Clonora.Views.Shared.Details]
     ]).each(function(subViewParams) {
       that._addSubView.apply(that, subViewParams)
     });
@@ -41,12 +42,6 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
     return this;
   },
 
-  close: function() {
-    this.subViews.each(function(subView) {
-      subView.remove();
-    })
-  },
-
   newAnswer: function(event) {
     event.preventDefault();
     var $form = $(event.target)
@@ -57,11 +52,17 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
     );
   },
 
+  close: function() {
+    this.subViews.each(function(subView) {
+      subView.remove();
+    })
+  },
+
   _addSubView: function(cssSelector, View) {
     this.subViews || ( this.subViews = _([]) )
 
     var $el = this.$el.find(cssSelector);
-    view = new View({question: this.question});
+    view = new View({model: this.question});
     $el.html(view.renderShow().$el);
 
     this.subViews.push(view)

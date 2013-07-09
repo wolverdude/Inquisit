@@ -25,7 +25,7 @@ Clonora.Routers.Questions = Backbone.Router.extend({
 
   show: function(id) {
     var that = this
-    var question = Clonora.questions.get(id);
+    var question = Clonora.Models.Question.findOrCreate({id: id});
 
     question.fetch({
       success: function() {

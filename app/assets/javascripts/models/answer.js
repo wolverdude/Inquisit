@@ -11,6 +11,8 @@ Clonora.Models.Answer = Backbone.RelationalModel.extend({
 
   parse: function(resp) {
     return resp.answer;
-  }
+  },
+
+  modelName: 'answer'
 
 });

@@ -1,7 +1,7 @@
 <form action="#" method="get" accept-charset="utf-8">
   <fieldset>
-    <textarea name="question[description]"
-      class="textarea"><%= question.escape('description') %></textarea>
+    <textarea name="<%= model.modelName %>[description]"
+      class="textarea"><%= model.escape('description') %></textarea>
     <div class="pull-right">
       <button type="button" class="btn cancel">Cancel</button>
       <input type="submit" value="Update" class="btn-primary" />

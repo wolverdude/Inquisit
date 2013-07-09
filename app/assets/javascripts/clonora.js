@@ -1,7 +1,7 @@
 window.Clonora = {
   Models: {},
   Collections: {},
-  Views: {},
+  Views: {Shared: {}},
   Routers: {},
   initialize: function() {
     // get bootstrapped data
@@ -29,8 +29,11 @@ window.Clonora = {
       }
     });
 
-    // start router
+    // start routers
     Clonora.questionsRouter = new Clonora.Routers.Questions({
+      $el: $('#content')
+    });
+    Clonora.topicsRouter = new Clonora.Routers.Topics({
       $el: $('#content')
     });
     Backbone.history.start();

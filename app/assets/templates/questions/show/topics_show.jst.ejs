@@ -1,9 +1,9 @@
 <ul class="inline">
   <strong>Topics:</strong>
-  <% if (question.get('topics').isEmpty()) { %>
+  <% if (model.get('topics').isEmpty()) { %>
     <li>none</li>
   <% } %>
-  <% question.get('topics').each(function(topic) { %>
+  <% model.get('topics').each(function(topic) { %>
     <li class="topic-list-item">
       <a href="#/topics/<%= topic.id %>">
         <%= topic.escape('title') %>

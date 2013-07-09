@@ -1,7 +1,7 @@
-Clonora.Views.QuestionsShow.Details = Clonora.Views.ShowEditSubView.extend({
+Clonora.Views.Shared.Details = Clonora.Views.ShowEditSubView.extend({
 
-  showTemplate: JST['questions/show/details_show'],
-  editTemplate: JST['questions/show/details_edit'],
+  showTemplate: JST['shared/details_show'],
+  editTemplate: JST['shared/details_edit'],
 
   events: {
     "click a.btn-edit": "eventEdit",
@@ -19,7 +19,7 @@ Clonora.Views.QuestionsShow.Details = Clonora.Views.ShowEditSubView.extend({
     var $form = $(event.target);
 
     var that = this;
-    this.question.save($form.serializeJSON(), {
+    this.model.save($form.serializeJSON(), {
       success: function() {
         that.renderShow();
       },

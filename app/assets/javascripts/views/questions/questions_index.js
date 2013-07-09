@@ -6,6 +6,7 @@ Clonora.Views.QuestionsIndex = Backbone.View.extend({
 
   initialize: function(params) {
     _.extend(this, params);
+    this.$el.addClass('unstyled')
   },
 
   render: function() {

@@ -8,6 +8,10 @@ Clonora.Views.ShowEditSubView = Backbone.View.extend({
     this.binding = binding;
   },
 
+  render: function() {
+    return this.renderShow();
+  },
+
   renderShow: function() {
     return this._render(this.showTemplate);
   },

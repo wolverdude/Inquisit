@@ -12,8 +12,8 @@ Clonora.Views.QuestionsShow.Topics = Clonora.Views.ShowEditSubView.extend({
 
   initialize: function(binding) {
     this.binding = binding;
-    this.question = binding.question;
-    this.topics = binding.question.get('topics');
+    this.model = binding.model;
+    this.topics = binding.model.get('topics');
   },
 
   eventAddTopic: function(event) {
@@ -28,7 +28,7 @@ Clonora.Views.QuestionsShow.Topics = Clonora.Views.ShowEditSubView.extend({
     var that = this;
     $.ajax({
       type: "POST",
-      url: "questions/" + this.question.id + "/topics",
+      url: "questions/" + this.model.id + "/topics",
       data: topicData,
       wait: true,
       success: function(fetchedTopicData) {
@@ -49,7 +49,7 @@ Clonora.Views.QuestionsShow.Topics = Clonora.Views.ShowEditSubView.extend({
     var that = this;
     var topic = this.topics.get(id);
     this.topics.remove(topic);
-    this.question.save({}, {
+    this.model.save({}, {
       wait: true,
       success: function() {
         that.renderEdit();

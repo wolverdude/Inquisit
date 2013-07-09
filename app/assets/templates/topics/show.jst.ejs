@@ -1,0 +1,16 @@
+<div id="topic-block">
+
+  <div id="title"></div>
+  <div id="details"></div>
+
+  <hr />
+  <% var questionsCount = model.get('questions').length %>
+  <p><strong>
+    <%= questionsCount %>
+    <%= questionsCount === 1 ? "Question" : "Questions" %>
+  </strong></p>
+
+</div>
+
+<div id="questions-list"></div>
+

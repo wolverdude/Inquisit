@@ -4,5 +4,5 @@ child :answers do
   extends "answers/show"
 end
 child :topics do
-  extends "topics/show"
+  extends "topics/show_attrs"
 end
