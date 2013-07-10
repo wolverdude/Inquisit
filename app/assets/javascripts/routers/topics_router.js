@@ -12,7 +12,6 @@ Clonora.Routers.Topics = Backbone.Router.extend({
     var that = this
     var topic = Clonora.Models.Topic.findOrCreate({id: id});
 
-    debugger
     topic.fetch({
       success: function() {
         var view = new Clonora.Views.TopicsShow({

@@ -1,2 +1,2 @@
 collection @topics
-attributes *Topic.column_names
+attributes :title, :id

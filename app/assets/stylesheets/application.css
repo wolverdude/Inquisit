@@ -165,3 +165,7 @@ a.btn-edit:hover {
   font-weight: bold;
   color: black;
 }
+
+.ui-autocomplete-loading {
+  background: white right center no-repeat url('http://jqueryui.com/resources/demos/autocomplete/images/ui-anim_basic_16x16.gif');
+}

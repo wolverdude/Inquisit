@@ -24,7 +24,12 @@ class TopicsController < ApplicationController
   end
 
   def index
-    @topics = Topic.all
+    if params.has_key?(:term)
+      matcher = "%#{params[:term]}%"
+      @topics = Topic.where("title LIKE ?", matcher).limit(10)
+    else
+      @topics = Topic.limit(10)
+    end
   end
 
   def show
