@@ -1,4 +1,4 @@
-Clonora::Application.routes.draw do
+Inquisit::Application.routes.draw do
 
   root :to => "root#index"
   match "index" => "root#index"

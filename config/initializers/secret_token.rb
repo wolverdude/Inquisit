@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Clonora::Application.config.secret_token = 'b9f88f82ea0fdd55e9cfc68c758401604f95438e2d87380ef188cd94c3c8063884dc4a68d6e83d23a33106fc9ae204377fbe7d40361e606f4ecbdc6d9bc78242'
+Inquisit::Application.config.secret_token = 'b9f88f82ea0fdd55e9cfc68c758401604f95438e2d87380ef188cd94c3c8063884dc4a68d6e83d23a33106fc9ae204377fbe7d40361e606f4ecbdc6d9bc78242'

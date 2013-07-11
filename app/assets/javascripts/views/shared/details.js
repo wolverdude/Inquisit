@@ -1,4 +1,4 @@
-Clonora.Views.Shared.Details = Clonora.Views.ShowEditSubView.extend({
+Inquisit.Views.Shared.Details = Inquisit.Views.ShowEditSubView.extend({
 
   showTemplate: JST['shared/details_show'],
   editTemplate: JST['shared/details_edit'],

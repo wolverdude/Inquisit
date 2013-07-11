@@ -1,9 +1,9 @@
-Clonora.Models.Topic = Backbone.RelationalModel.extend({
+Inquisit.Models.Topic = Backbone.RelationalModel.extend({
   relations: [{
     type: Backbone.HasMany,
     key: 'questions',
-    relatedModel: Clonora.Models.Question,
-    collectionType: Clonora.Collections.Questions,
+    relatedModel: Inquisit.Models.Question,
+    collectionType: Inquisit.Collections.Questions,
     includeInJSON: false,
     parse: true
   }],

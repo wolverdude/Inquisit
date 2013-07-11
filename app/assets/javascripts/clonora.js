@@ -1,4 +1,4 @@
-window.Clonora = {
+window.Inquisit = {
   Models: {},
   Collections: {},
   Views: {Shared: {}},
@@ -14,10 +14,10 @@ window.Clonora = {
     $currentUserEl.remove();
     $questionsEl.remove();
 
-    Clonora.currentUser = new Clonora.Models.User(
+    Inquisit.currentUser = new Inquisit.Models.User(
       currentUserData, {parse: true}
     );
-    Clonora.questions = new Clonora.Collections.Questions(
+    Inquisit.questions = new Inquisit.Collections.Questions(
       questionsData, {parse: true}
     );
 
@@ -30,10 +30,10 @@ window.Clonora = {
     });
 
     // start routers
-    Clonora.questionsRouter = new Clonora.Routers.Questions({
+    Inquisit.questionsRouter = new Inquisit.Routers.Questions({
       $el: $('#content')
     });
-    Clonora.topicsRouter = new Clonora.Routers.Topics({
+    Inquisit.topicsRouter = new Inquisit.Routers.Topics({
       $el: $('#content')
     });
     Backbone.history.start();
@@ -41,5 +41,5 @@ window.Clonora = {
 };
 
 $(document).ready(function(){
-  Clonora.initialize();
+  Inquisit.initialize();
 });

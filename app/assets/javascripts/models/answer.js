@@ -1,9 +1,9 @@
-Clonora.Models.Answer = Backbone.RelationalModel.extend({
+Inquisit.Models.Answer = Backbone.RelationalModel.extend({
 
   relations: [{
     type: Backbone.HasOne,
     key: 'user',
-    relatedModel: "Clonora.Models.User",
+    relatedModel: "Inquisit.Models.User",
     includeInJSON: false
   }],
 

@@ -9,6 +9,19 @@ $dark_blue: #19558d;
 $blue: #538dc2;
 $light_blue: #dfeaf4;
 
+body {
+  padding-top: 40px;
+  color: lighten($base_color, 20%);
+}
+
+hr {
+  border-top-color: lighten($base_color, 80%);
+}
+
+textarea.textarea {
+  width: 97%;
+}
+
 // Mixins
 
 @mixin ellipsis_box {
@@ -26,10 +39,6 @@ $light_blue: #dfeaf4;
 }
 
 // General Classes
-
-.ellipsis {
-  @include ellipsis_box;
-}
 
 $media_font_size: 14px;
 $media_margin: 3px;
@@ -64,6 +73,10 @@ $media_margin: 3px;
       color: $dark_blue;
     };
   }
+}
+
+.ellipsis {
+  @include ellipsis_box;
 }
 
 // Specific Classes
@@ -147,15 +160,9 @@ ul.topics-list {
 
 // Specific Elements
 
-#logo {
-  background-color: #a82400;
-  color: white;
-  box-shadow: none;
-  text-shadow: none;
-  font-family: serif;
-  padding: 8px 6px;
-  margin: 5px 10px;
-  &:active {
-    background-color: #801b00;
-  }
+#question_title {
+  line-height: 20px;
+  font-size: 17.5px;
+  font-weight: bold;
+  color: black;
 }

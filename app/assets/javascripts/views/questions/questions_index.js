@@ -1,4 +1,4 @@
-Clonora.Views.QuestionsIndex = Backbone.View.extend({
+Inquisit.Views.QuestionsIndex = Backbone.View.extend({
 
   template: JST['questions/index'],
 
@@ -14,7 +14,7 @@ Clonora.Views.QuestionsIndex = Backbone.View.extend({
 
     var that = this;
     this.questions.each(function(question) {
-      view = new Clonora.Views.QuestionsBlurb({
+      view = new Inquisit.Views.QuestionsBlurb({
         question: question
       });
 

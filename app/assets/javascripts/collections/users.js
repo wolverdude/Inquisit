@@ -1,6 +1,6 @@
-Clonora.Collections.Users = Backbone.Collection.extend({
+Inquisit.Collections.Users = Backbone.Collection.extend({
 
-  model: Clonora.Models.User,
+  model: Inquisit.Models.User,
 
   url: "/users"
 

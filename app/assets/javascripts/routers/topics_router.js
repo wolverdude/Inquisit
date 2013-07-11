@@ -1,4 +1,4 @@
-Clonora.Routers.Topics = Backbone.Router.extend({
+Inquisit.Routers.Topics = Backbone.Router.extend({
 
   routes: {
    "topics/:id": "show"
@@ -10,11 +10,11 @@ Clonora.Routers.Topics = Backbone.Router.extend({
 
   show: function(id) {
     var that = this
-    var topic = Clonora.Models.Topic.findOrCreate({id: id});
+    var topic = Inquisit.Models.Topic.findOrCreate({id: id});
 
     topic.fetch({
       success: function() {
-        var view = new Clonora.Views.TopicsShow({
+        var view = new Inquisit.Views.TopicsShow({
           model: topic
         });
         that._swapView(view);

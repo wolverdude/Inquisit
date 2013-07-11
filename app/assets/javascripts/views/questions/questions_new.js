@@ -1,4 +1,4 @@
-Clonora.Views.QuestionsNew = Backbone.View.extend({
+Inquisit.Views.QuestionsNew = Backbone.View.extend({
 
   template: JST["questions/new"],
 
@@ -17,7 +17,7 @@ Clonora.Views.QuestionsNew = Backbone.View.extend({
     event.preventDefault();
     var $form = $("form#new-question");
 
-    this.question = Clonora.questions.create(
+    this.question = Inquisit.questions.create(
       $form.serializeJSON().question, {
         wait: true,
         success: function() {

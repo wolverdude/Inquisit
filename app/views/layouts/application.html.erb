@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Clonora</title>
+  <title>Inquisit</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -36,7 +36,7 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-  Clonora.showSiteMessage = function(cssSelector, timeout) {
+  Inquisit.showSiteMessage = function(cssSelector, timeout) {
     var $el = $(cssSelector);
     $el.addClass('in');
 
@@ -48,10 +48,10 @@
   }
 
   <% if alert %>
-    Clonora.showSiteMessage("#collapse-alert");
+    Inquisit.showSiteMessage("#collapse-alert");
   <% end %>
   <% if notice %>
-    Clonora.showSiteMessage("#collapse-notice", 2500);
+    Inquisit.showSiteMessage("#collapse-notice", 2500);
   <% end %>
 
 </script>

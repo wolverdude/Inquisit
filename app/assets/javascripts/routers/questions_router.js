@@ -1,4 +1,4 @@
-Clonora.Routers.Questions = Backbone.Router.extend({
+Inquisit.Routers.Questions = Backbone.Router.extend({
 
   routes: {
     "": "index",
@@ -12,24 +12,24 @@ Clonora.Routers.Questions = Backbone.Router.extend({
   },
 
   index: function() {
-    var view = new Clonora.Views.QuestionsIndex({
-      questions: Clonora.questions
+    var view = new Inquisit.Views.QuestionsIndex({
+      questions: Inquisit.questions
     });
     this._swapView(view);
   },
 
   new: function() {
-    var view = new Clonora.Views.QuestionsNew()
+    var view = new Inquisit.Views.QuestionsNew()
     this._swapView(view);
   },
 
   show: function(id) {
     var that = this
-    var question = Clonora.Models.Question.findOrCreate({id: id});
+    var question = Inquisit.Models.Question.findOrCreate({id: id});
 
     question.fetch({
       success: function() {
-        var view = new Clonora.Views.QuestionsShow({
+        var view = new Inquisit.Views.QuestionsShow({
           question: question
         });
         that._swapView(view);

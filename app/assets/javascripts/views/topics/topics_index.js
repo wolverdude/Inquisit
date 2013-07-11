@@ -1,4 +1,4 @@
-Clonora.Views.TopicsIndex = Backbone.View.extend({
+Inquisit.Views.TopicsIndex = Backbone.View.extend({
 
   template: JST['topics/index']
 

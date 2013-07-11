@@ -1,18 +1,18 @@
-Clonora.Models.Question = Backbone.RelationalModel.extend({
+Inquisit.Models.Question = Backbone.RelationalModel.extend({
 
   relations: [{
     type: Backbone.HasMany,
     key: 'topics',
-    relatedModel: "Clonora.Models.Topic",
-    collectionType: Clonora.Collections.Topics,
+    relatedModel: "Inquisit.Models.Topic",
+    collectionType: Inquisit.Collections.Topics,
     includeInJSON: 'id',
     keyDestination: 'topic_ids',
     parse: true
   },{
     type: Backbone.HasMany,
     key: 'answers',
-    relatedModel: "Clonora.Models.Answer",
-    collectionType: Clonora.Collections.Answers,
+    relatedModel: "Inquisit.Models.Answer",
+    collectionType: Inquisit.Collections.Answers,
     includeInJSON: false,
     parse: true,
     reverseRelation: {
@@ -22,7 +22,7 @@ Clonora.Models.Question = Backbone.RelationalModel.extend({
   },{
     type: Backbone.HasOne,
     key: 'asker',
-    relatedModel: "Clonora.Models.User",
+    relatedModel: "Inquisit.Models.User",
     includeInJSON: false,
     parse: true,
   }],

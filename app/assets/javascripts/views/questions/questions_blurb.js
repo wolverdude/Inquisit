@@ -1,4 +1,4 @@
-Clonora.Views.QuestionsBlurb = Backbone.View.extend({
+Inquisit.Views.QuestionsBlurb = Backbone.View.extend({
 
   template: JST['questions/blurb'],
 

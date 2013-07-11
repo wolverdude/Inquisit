@@ -1,4 +1,4 @@
-Clonora.Views.QuestionsShow = Backbone.View.extend({
+Inquisit.Views.QuestionsShow = Backbone.View.extend({
 
   template: JST['questions/show'],
 
@@ -16,23 +16,23 @@ Clonora.Views.QuestionsShow = Backbone.View.extend({
     var that = this;
 
     var renderedContent = this.template({
-      currentUser: Clonora.currentUser,
+      currentUser: Inquisit.currentUser,
       question: this.question
     });
 
     this.$el.html(renderedContent);
 
     _([
-      ['div#topics', Clonora.Views.QuestionsShow.Topics],
-      ['div#title', Clonora.Views.Shared.Title],
-      ['div#details', Clonora.Views.Shared.Details]
+      ['div#topics', Inquisit.Views.QuestionsShow.Topics],
+      ['div#title', Inquisit.Views.Shared.Title],
+      ['div#details', Inquisit.Views.Shared.Details]
     ]).each(function(subViewParams) {
       that._addSubView.apply(that, subViewParams)
     });
 
     var $answerList = this.$el.find('ul#answers-list');
     this.question.get('answers').each(function(answer) {
-      var answerView = new Clonora.Views.AnswersShow({
+      var answerView = new Inquisit.Views.AnswersShow({
         answer: answer
       });
 

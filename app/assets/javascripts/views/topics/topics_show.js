@@ -1,4 +1,4 @@
-Clonora.Views.TopicsShow = Backbone.View.extend({
+Inquisit.Views.TopicsShow = Backbone.View.extend({
 
   template: JST['topics/show'],
 
@@ -14,9 +14,9 @@ Clonora.Views.TopicsShow = Backbone.View.extend({
 
     var that = this;
     _([
-      ['div#title', Clonora.Views.Shared.Title, {model: this.model}],
-      ['div#details', Clonora.Views.Shared.Details, {model: this.model}],
-      ['div#questions-list', Clonora.Views.QuestionsIndex, {
+      ['div#title', Inquisit.Views.Shared.Title, {model: this.model}],
+      ['div#details', Inquisit.Views.Shared.Details, {model: this.model}],
+      ['div#questions-list', Inquisit.Views.QuestionsIndex, {
         questions: this.model.get('questions')
       }]
     ]).each(function(subViewParams) {

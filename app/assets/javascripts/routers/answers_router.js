@@ -1,3 +1,3 @@
-Clonora.Routers.Answers = Backbone.Router.extend({
+Inquisit.Routers.Answers = Backbone.Router.extend({
 
 });

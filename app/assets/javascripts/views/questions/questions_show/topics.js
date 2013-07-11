@@ -1,4 +1,4 @@
-Clonora.Views.QuestionsShow.Topics = Clonora.Views.ShowEditSubView.extend({
+Inquisit.Views.QuestionsShow.Topics = Inquisit.Views.ShowEditSubView.extend({
 
   showTemplate: JST['questions/show/topics_show'],
   editTemplate: JST['questions/show/topics_edit'],
@@ -31,12 +31,12 @@ Clonora.Views.QuestionsShow.Topics = Clonora.Views.ShowEditSubView.extend({
 
       source: function(term, process) {
         $.get("/topics", {term: term}, function(topicsData) {
-          that.typeAheadTopics = new Clonora.Collections.Topics()
+          that.typeAheadTopics = new Inquisit.Collections.Topics()
           var matchList = []
 
           _(topicsData).each(function(topicData) {
             if (!that.topics.findWhere(topicData.topic)) {
-              var topic = Clonora.Models.Topic.findOrCreate(
+              var topic = Inquisit.Models.Topic.findOrCreate(
                 topicData, {parse: true}
               );
               that.typeAheadTopics.add(topic);
@@ -93,7 +93,7 @@ Clonora.Views.QuestionsShow.Topics = Clonora.Views.ShowEditSubView.extend({
       data: topicData,
       wait: true,
       success: function(fetchedTopicData) {
-        var topic = Clonora.Models.Topic.findOrCreate(
+        var topic = Inquisit.Models.Topic.findOrCreate(
           fetchedTopicData,
           {parse: true}
         );

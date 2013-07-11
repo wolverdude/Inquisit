@@ -1,4 +1,4 @@
-Clonora.Views.ShowEditSubView = Backbone.View.extend({
+Inquisit.Views.ShowEditSubView = Backbone.View.extend({
 
   showTemplate: function() { throw new Error("show template not given") },
   showTemplate: function() { throw new Error("edit template not given") },

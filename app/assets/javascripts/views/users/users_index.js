@@ -1,4 +1,4 @@
-Clonora.Views.UsersIndex = Backbone.View.extend({
+Inquisit.Views.UsersIndex = Backbone.View.extend({
 
   template: JST['users/index']
 

@@ -1,4 +1,4 @@
-Clonora.Views.AnswersShow = Backbone.View.extend({
+Inquisit.Views.AnswersShow = Backbone.View.extend({
 
   template: JST['answers/show'],
 

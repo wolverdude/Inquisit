@@ -1,3 +1,3 @@
-Clonora.Routers.Users = Backbone.Router.extend({
+Inquisit.Routers.Users = Backbone.Router.extend({
 
 });

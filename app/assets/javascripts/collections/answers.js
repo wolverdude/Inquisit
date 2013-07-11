@@ -1,6 +1,6 @@
-Clonora.Collections.Answers = Backbone.Collection.extend({
+Inquisit.Collections.Answers = Backbone.Collection.extend({
 
-  model: Clonora.Models.Answer,
+  model: Inquisit.Models.Answer,
 
   url: "/answers"
 

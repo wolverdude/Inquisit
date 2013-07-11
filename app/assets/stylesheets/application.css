@@ -13,26 +13,6 @@
  *= require_tree .
  */
 
-// Basic Styles
-
-$base_color: black;
-$dark_blue: #19558d;
-$blue: #538dc2;
-$light_blue: #dfeaf4;
-
-body {
-  padding-top: 40px;
-  color: lighten($base_color, 20%);
-}
-
-hr {
-  border-top-color: lighten($base_color, 80%);
-}
-
-textarea.textarea {
-  width: 97%;
-}
-
 #site-messages .accordion-body {
   float: left;
   margin-left: 1em;
@@ -44,9 +24,18 @@ textarea.textarea {
   border-color: #d4d4d4;
 }
 
-#question_title {
-  line-height: 20px;
-  font-size: 17.5px;
+#logo {
+  background-color: #a82400;
+  color: white;
+  font-family: Papyrus, fantasy;
   font-weight: bold;
-  color: black;
+
+  box-shadow: none;
+  text-shadow: none;
+  padding: 8px 6px 1px;
+  margin: 5px 10px;
+
+  &:active {
+    background-color: #801b00;
+  }
 }

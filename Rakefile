@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Clonora::Application.load_tasks
+Inquisit::Application.load_tasks
