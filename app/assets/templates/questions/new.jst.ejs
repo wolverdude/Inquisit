@@ -1,25 +1,52 @@
-<h2>Add Question</h2>
+<div class="form-horizontal">
 
-<div id="question_topics"></div>
+  <div class="controls">
+    <h3>Add Question</h3>
+  </div>
 
-<form action="/questions" method="post"
-  accept-charset="utf-8" id="new-question">
+  <div class="control-group">
+    <label class="control-label" for="topic_title">Topics</label>
+    <div class="controls">
+      <div id="question_topics"></div>
+    </div>
+  </div>
 
-  <label for="question_title">Question</label>
-  <input type="text" name="question[title]" value="" required
-    id="question_title" placeholder="Type Question Here" />
+  <form action="/questions" method="post" accept-charset="utf-8"
+    id="new-question">
 
-  <label for="question_description">Details</label>
-  <textarea name="question[description]" id="question_description"
-    placeholder="Optional: Provide more details about your question"
-    ></textarea>
+    <div class="control-group">
+      <label class="control-label" for="question_title">Question</label>
+      <div class="controls">
+        <input type="text" name="question[title]" value="" required
+          id="question_title" placeholder="Type Question Here" />
+      </div>
+    </div>
 
-  <label for="question_anonymous">
-    <input type="checkbox" name="question[anonymous]" value="true"
-      id="question_anonymous" />
-    Add Anonymously
-  </label>
+    <div class="control-group">
+      <label class="control-label" for="question_description">Details</label>
+      <div class="controls">
+        <textarea name="question[description]" id="question_description"
+          placeholder="Optional: Provide more details about your question"
+          class="full-width" ></textarea>
+      </div>
+    </div>
 
-  <input type="submit" value="Add Question" class="btn btn-primary" />
+  <div class="control-group">
+    <div class="controls form-inline">
+      <input type="checkbox" name="question[anonymous]" value="true"
+        class="full-width" id="question_anonymous" />
+      <label for="question_anonymous">
+        Add Anonymously
+      </label>
+    </div>
+  </div>
 
-</form>
+  <div class="control-group">
+    <div class="controls">
+      <input type="submit" value="Add Question" class="btn btn-primary" />
+    </div>
+  </div>
+
+  </form>
+
+</div>

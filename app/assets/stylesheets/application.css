@@ -39,3 +39,7 @@
     background-color: #801b00;
   }
 }
+
+.control-label {
+  font-weight: bold;
+}

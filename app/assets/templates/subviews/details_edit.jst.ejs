@@ -1,10 +1,10 @@
 <form action="#" method="get" accept-charset="utf-8">
-  <fieldset>
-    <textarea name="<%= model.modelName %>[description]"
-      class="textarea"><%= model.escape('description') %></textarea>
-    <div class="pull-right">
-      <button type="button" class="btn cancel">Cancel</button>
-      <input type="submit" value="Update" class="btn btn-primary" />
-    </div>
-  </fieldset>
+  <textarea name="<%= model.modelName %>[description]" class="full-width"
+    autofocus><%= model.escape('description') %></textarea>
+
+  <div class="pull-right">
+    <button type="button" class="btn cancel">Cancel</button>
+    <input type="submit" value="Update" class="btn btn-primary" />
+  </div>
+  <div class="clearfix"></div>
 </form>

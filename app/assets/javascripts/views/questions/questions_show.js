@@ -38,6 +38,7 @@ Inquisit.Views.QuestionsShow = Backbone.View.extend({
         answer: answer
       });
 
+      that.subViews.push(answerView);
       $answerList.append(answerView.render().$el);
     });
 

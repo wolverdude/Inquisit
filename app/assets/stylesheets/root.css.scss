@@ -18,8 +18,8 @@ hr {
   border-top-color: lighten($base_color, 80%);
 }
 
-textarea.textarea {
-  width: 97%;
+.full-width {
+  width: 97.5%;
 }
 
 // Mixins
@@ -55,6 +55,9 @@ $media_margin: 3px;
     font-weight: bold;
     margin: $media_margin 0px;
     color: lighten($base_color, 20%);
+    a {
+      color: lighten($base_color, 20%);
+    }
   }
   .link-title {
     color: $dark_blue;
@@ -136,7 +139,6 @@ ul.topics-list {
   background-color: $light_blue;
 
   font-size: 20px;
-  width: 20px;
   height: 17px;
   padding-bottom: 4px;
 
@@ -165,4 +167,9 @@ ul.topics-list {
   font-size: 17.5px;
   font-weight: bold;
   color: black;
+}
+
+// Bootstrap fix
+.navbar-search .btn {
+  margin-top: 0;
 }
