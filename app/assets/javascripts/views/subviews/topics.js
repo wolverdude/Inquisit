@@ -1,12 +1,11 @@
-Inquisit.Views.QuestionsShow.Topics = Inquisit.Views.ShowEditSubView.extend({
+Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
 
-  showTemplate: JST['questions/show/topics_show'],
-  editTemplate: JST['questions/show/topics_edit'],
+  showTemplate: JST['subviews/topics_show'],
+  editTemplate: JST['subviews/topics_edit'],
 
   events: {
     "click a.btn-edit": "eventEdit",
     "click button.cancel": "eventShow",
-    "submit form": "eventAddTopic",
     "click a.remove-topic": "eventRemoveTopic"
   },
 
@@ -17,7 +16,7 @@ Inquisit.Views.QuestionsShow.Topics = Inquisit.Views.ShowEditSubView.extend({
 
     var that = this;
     _(['add', 'remove', 'change']).each(function(event) {
-      that.listenTo(that.topics, 'add', that.renderEdit);
+      that.listenTo(that.topics, event, that.renderEdit);
     });
   },
 
@@ -26,7 +25,6 @@ Inquisit.Views.QuestionsShow.Topics = Inquisit.Views.ShowEditSubView.extend({
 
     this._render(this.editTemplate)
     this.$el.find("#topic_title").typeahead({
-      items: 8,
       minLength: 2,
 
       source: function(term, process) {
@@ -74,46 +72,17 @@ Inquisit.Views.QuestionsShow.Topics = Inquisit.Views.ShowEditSubView.extend({
     return this
   },
 
-  eventAddTopic: function(event) {
-    event.preventDefault();
-    console.log("triggered")
-    return
-
-    var topicData = $(event.target).serializeJSON();
-
-    if (this.topics.findWhere(topicData.topic)) {
-      this.renderEdit();
-      return;
-    }
-
-    var that = this;
-    $.ajax({
-      type: "POST",
-      url: "questions/" + this.model.id + "/topics",
-      data: topicData,
-      wait: true,
-      success: function(fetchedTopicData) {
-        var topic = Inquisit.Models.Topic.findOrCreate(
-          fetchedTopicData,
-          {parse: true}
-        );
-        that.topics.add(topic);
-        that.renderEdit();
-      }
-    });
-  },
-
   eventRemoveTopic: function(event) {
     event.preventDefault();
+
     var id = $(event.currentTarget).data('id');
+    var topic = this.topics.get(id);
 
     var that = this;
-    var topic = this.topics.get(id);
-    this.topics.remove(topic);
     this.model.save({}, {
       wait: true,
       success: function() {
-        that.renderEdit();
+        that.topics.remove(topic);
       }
     });
   }

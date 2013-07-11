@@ -6,10 +6,23 @@ Inquisit.Views.QuestionsNew = Backbone.View.extend({
     "submit form#new-question": "submit"
   },
 
+  initialize: function() {
+    this.question = new Inquisit.Models.Question()
+  },
+
   render: function() {
     var renderedContent = this.template();
-
     this.$el.html(renderedContent);
+
+    this.$topicsEditEl = this.$el.find("#question_topics");
+
+    this.topicsEditView && this.topicsEditView.remove();
+    this.topicsEditView = new Inquisit.Views.SubViews.TopicsEdit({
+      model: this.question
+    });
+
+    this.$topicsEditEl.html(this.topicsEditView.render().$el);
+
     return this;
   },
 
@@ -17,14 +30,17 @@ Inquisit.Views.QuestionsNew = Backbone.View.extend({
     event.preventDefault();
     var $form = $("form#new-question");
 
-    this.question = Inquisit.questions.create(
-      $form.serializeJSON().question, {
-        wait: true,
-        success: function() {
-          Backbone.history.navigate("#/")
-        }
+    this.question.save($form.serializeJSON().question, {
+      wait: true,
+      success: function(question) {
+        Inquisit.questions.add(question);
+        Backbone.history.navigate("#/questions/" + question.id);
       }
-    );
+    });
+  },
+
+  close: function() {
+    this.topicsEditView.remove();
   }
 
 });

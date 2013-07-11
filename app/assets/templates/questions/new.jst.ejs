@@ -1,20 +1,18 @@
 <h2>Add Question</h2>
 
+<div id="question_topics"></div>
+
 <form action="/questions" method="post"
   accept-charset="utf-8" id="new-question">
-
-  <label for="question_topic">Topic</label>
-  <input type="text" name="question[topic_ids]" value="" required
-    id="question_topic" placeholder="Select Topic" />
 
   <label for="question_title">Question</label>
   <input type="text" name="question[title]" value="" required
     id="question_title" placeholder="Type Question Here" />
 
   <label for="question_description">Details</label>
-  <input type="text" name="question[description]" value=""
-    id="question_description"
-    placeholder="Optional: Provide more details about your question" />
+  <textarea name="question[description]" id="question_description"
+    placeholder="Optional: Provide more details about your question"
+    ></textarea>
 
   <label for="question_anonymous">
     <input type="checkbox" name="question[anonymous]" value="true"
@@ -22,6 +20,6 @@
     Add Anonymously
   </label>
 
-  <input type="submit" value="Add Question" />
+  <input type="submit" value="Add Question" class="btn btn-primary" />
 
 </form>

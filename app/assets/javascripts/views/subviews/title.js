@@ -1,17 +1,12 @@
-Inquisit.Views.Shared.Details = Inquisit.Views.ShowEditSubView.extend({
+Inquisit.Views.SubViews.Title = Inquisit.Views.ShowEditSubView.extend({
 
-  showTemplate: JST['shared/details_show'],
-  editTemplate: JST['shared/details_edit'],
+  showTemplate: JST['subviews/title_show'],
+  editTemplate: JST['subviews/title_edit'],
 
   events: {
     "click a.btn-edit": "eventEdit",
     "click button.cancel": "eventShow",
     "submit form": "eventSubmit",
-  },
-
-  initialize: function(binding) {
-    _.extend(this, binding);
-    this.binding = binding;
   },
 
   eventSubmit: function(event) {

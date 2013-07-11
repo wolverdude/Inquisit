@@ -1,7 +1,7 @@
 window.Inquisit = {
   Models: {},
   Collections: {},
-  Views: {Shared: {}},
+  Views: {SubViews: {}},
   Routers: {},
   initialize: function() {
     // get bootstrapped data

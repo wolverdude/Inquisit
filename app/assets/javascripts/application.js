@@ -4,7 +4,7 @@
 //= require backbone
 //= require backbone-relational
 //
-//= require clonora
+//= require inquisit
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

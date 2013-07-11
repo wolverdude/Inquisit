@@ -10,10 +10,12 @@ Inquisit.Views.QuestionsShow = Backbone.View.extend({
     _.extend(this, params);
     this.listenTo(this.question.get('answers'), 'add', this.render);
     this.listenTo(this.question.get('answers'), 'remove', this.render);
+    this.subViews = _([]);
   },
 
   render: function() {
     var that = this;
+    this._removeSubViews()
 
     var renderedContent = this.template({
       currentUser: Inquisit.currentUser,
@@ -23,9 +25,9 @@ Inquisit.Views.QuestionsShow = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     _([
-      ['div#topics', Inquisit.Views.QuestionsShow.Topics],
-      ['div#title', Inquisit.Views.Shared.Title],
-      ['div#details', Inquisit.Views.Shared.Details]
+      ['div#topics', Inquisit.Views.SubViews.Topics],
+      ['div#title', Inquisit.Views.SubViews.Title],
+      ['div#details', Inquisit.Views.SubViews.Details]
     ]).each(function(subViewParams) {
       that._addSubView.apply(that, subViewParams)
     });
@@ -53,19 +55,21 @@ Inquisit.Views.QuestionsShow = Backbone.View.extend({
   },
 
   close: function() {
+    this._removeSubViews();
+  },
+
+  _removeSubViews: function() {
     this.subViews.each(function(subView) {
       subView.remove();
     })
   },
 
-  _addSubView: function(cssSelector, View) {
-    this.subViews || ( this.subViews = _([]) )
-
+  _addSubView: function(cssSelector, View, binding) {
     var $el = this.$el.find(cssSelector);
     view = new View({model: this.question});
     $el.html(view.renderShow().$el);
 
-    this.subViews.push(view)
+    this.subViews.push(view);
     return view;
   }
 });

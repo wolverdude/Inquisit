@@ -4,9 +4,12 @@ Inquisit.Views.TopicsShow = Backbone.View.extend({
 
   initialize: function(params) {
     _.extend(this, params);
+    this.subViews = _([]);
   },
 
   render: function() {
+    this._removeSubViews()
+
     var renderedContent = this.template({
       model: this.model
     });
@@ -14,8 +17,8 @@ Inquisit.Views.TopicsShow = Backbone.View.extend({
 
     var that = this;
     _([
-      ['div#title', Inquisit.Views.Shared.Title, {model: this.model}],
-      ['div#details', Inquisit.Views.Shared.Details, {model: this.model}],
+      ['div#title', Inquisit.Views.SubViews.Title, {model: this.model}],
+      ['div#details', Inquisit.Views.SubViews.Details, {model: this.model}],
       ['div#questions-list', Inquisit.Views.QuestionsIndex, {
         questions: this.model.get('questions')
       }]
@@ -27,19 +30,21 @@ Inquisit.Views.TopicsShow = Backbone.View.extend({
   },
 
   close: function() {
+    this._removeSubViews();
+  },
+
+  _removeSubViews: function() {
     this.subViews.each(function(subView) {
       subView.remove();
     })
   },
 
   _addSubView: function(cssSelector, View, binding) {
-    this.subViews || ( this.subViews = _([]) )
-
     var $el = this.$el.find(cssSelector);
     view = new View(binding);
     $el.html(view.render().$el);
 
-    this.subViews.push(view)
+    this.subViews.push(view);
     return view;
   }
 });
