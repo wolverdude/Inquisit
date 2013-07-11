@@ -1,14 +1,16 @@
-<ul class="inline">
+<ul class="inline topics-list">
   <strong>Topics:</strong>
   <% if (model.get('topics').isEmpty()) { %>
     <li>none</li>
   <% } %>
   <% model.get('topics').each(function(topic) { %>
-    <li class="topic-list-item">
-      <a href="#/topics/<%= topic.id %>">
+    <li class="topics-list-item">
+      <a class="topic-link" href="#/topics/<%= topic.id %>">
         <%= topic.escape('title') %>
       </a>
     </li>
   <% }); %>
-  <li><a href="#" class="btn-edit" id="edit-topics">Edit</a></li>
+  <a href="#" class="btn-edit" id="edit-topics">
+    <i class="icon-pencil"></i> Edit
+  </a>
 </ul>

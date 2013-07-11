@@ -20,30 +20,31 @@
 <div class="row-fluid" id="answer-form">
   <div class="span1"></div>
 
-  <div class="span10">
-    <p><strong>
+  <div class="span10 media-frame">
+    <hr />
+
+    <h4 class="title">
       <% if (currentUser.get("anonymous")) { %>
         Anonymous
       <% } else { %>
         <% comma = (currentUser.get("bio")) ? "," : "" %>
-        <a href = "#/users/<%= currentUser.id %>" class="user-link">
+        <a href = "#/users/<%= currentUser.id %>">
           <%= currentUser.escape("name")%></a><%= comma %>
         <%= currentUser.escape("bio") %>
       <% } %>
-    </strong></p>
+    </h4>
 
     <form action="/questions/<%= question.id %>/answers"
           method="get" accept-charset="utf-8" id="new-answer">
-      <fieldset>
+      <fieldset class="body">
         <textarea name="answer[text]" placeholder="Add your answer"
           class="textarea"></textarea>
-        <br />
         <button type="submit" class="btn-primary pull-right">Add Answer</button>
       </fieldset>
     </form>
-
-    <div class="span1"></div>
   </div>
+
+  <div class="span1"></div>
 </div>
 
 <ul class="unstyled" id="answers-list"></ul>

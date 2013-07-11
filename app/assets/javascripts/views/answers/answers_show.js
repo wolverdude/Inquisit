@@ -10,7 +10,8 @@ Clonora.Views.AnswersShow = Backbone.View.extend({
   },
 
   events: {
-    "click a.vote": "vote",
+    "click a.upvote": "vote",
+    "click a.downvote": "vote",
     "click a.unvote": "unvote"
   },
 
@@ -30,7 +31,7 @@ Clonora.Views.AnswersShow = Backbone.View.extend({
 
     $.ajax({
       type: "POST",
-      url: $(event.target).attr('href'),
+      url: $(event.currentTarget).attr('href'),
       success: that.answer.fetch.bind(that.answer)
     });
   },
@@ -41,7 +42,7 @@ Clonora.Views.AnswersShow = Backbone.View.extend({
 
     $.ajax({
       type: "DELETE",
-      url: $(event.target).attr('href'),
+      url: $(event.currentTarget).attr('href'),
       success: that.answer.fetch.bind(that.answer)
     });
   }

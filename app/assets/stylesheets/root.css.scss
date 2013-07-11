@@ -1,3 +1,161 @@
 // Place all the styles related to the Root controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Basic Styles
+
+$base_color: black;
+$dark_blue: #19558d;
+$blue: #538dc2;
+$light_blue: #dfeaf4;
+
+// Mixins
+
+@mixin ellipsis_box {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@mixin rounded($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+  background-color: #dfeaf4;
+  margin: 0 $radius $radius 0;
+}
+
+// General Classes
+
+.ellipsis {
+  @include ellipsis_box;
+}
+
+$media_font_size: 14px;
+$media_margin: 3px;
+
+.media-frame {
+  margin: $media_margin 0px;
+  font-size: $media_font_size;
+  hr {
+    margin-top: 0px;
+    margin-bottom: $media_margin * 3;
+  }
+  .title {
+    font-size: $media_font_size;
+    font-weight: bold;
+    margin: $media_margin 0px;
+    color: lighten($base_color, 20%);
+  }
+  .link-title {
+    color: $dark_blue;
+  }
+  .info {
+    margin: $media_margin 0px;
+    color: lighten($base_color, 60%);
+    @include ellipsis_box;
+  }
+  .body{
+    margin: ($media_margin * 3) 0px $media_margin;
+  }
+  .footer {
+    color: $blue;
+    a:hover {
+      color: $dark_blue;
+    };
+  }
+}
+
+// Specific Classes
+
+ul.topics-list {
+  font-size: 13px;
+
+  & > li.topics-list-item {
+    @include rounded(3px);
+    padding: 0;
+    line-height: 1em;
+
+    a {
+      @include rounded(3px);
+      display: inline-block;
+      padding: 2px 4px;
+      margin: 0;
+
+      &:hover {
+        text-decoration: none;
+        color: white;
+        background-color: $dark_blue;
+      }
+    }
+  }
+}
+
+.btn-edit {
+  @include rounded(2px);
+
+  display: inline-block;
+  margin-left: 3px;
+  padding: 2px 6px 2px 5px;
+  line-height: 1em;
+
+  color: lighten($base_color, 60%);
+  background-color: inherit;
+
+  font-size: 11px;
+  font-weight: normal;
+  letter-spacing: 0;
+
+  &:hover {
+    color: #406a24;
+    background-color: #c3dd82;
+    text-decoration: none;
+  }
+}
+
+.vote-btns a {
+  @include rounded(3px);
+  display: inline-block;
+  clear: right;
+  float: right;
+
+  color: $dark_blue;
+  background-color: $light_blue;
+
+  font-size: 20px;
+  width: 20px;
+  height: 17px;
+  padding-bottom: 4px;
+
+  &.unvote {
+    color: white;
+    background-color: $dark_blue;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: white;
+    background-color: $dark_blue;
+    text-decoration: none;
+  }
+}
+
+.vote-tally {
+  color: lighten($base_color, 40%);
+  font-weight: bold;
+}
+
+// Specific Elements
+
+#logo {
+  background-color: #a82400;
+  color: white;
+  box-shadow: none;
+  text-shadow: none;
+  font-family: serif;
+  padding: 8px 6px;
+  margin: 5px 10px;
+  &:active {
+    background-color: #801b00;
+  }
+}

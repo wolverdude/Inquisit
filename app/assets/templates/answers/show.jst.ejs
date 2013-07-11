@@ -1,42 +1,37 @@
 <div class="span1">
   <div class="vote-btns pull-right">
-    <% if (answer.get("current_user_vote") > 0) { %>
-      <a href="/answers/<%= answer.id %>/unvote" class="unvote btn-up">
-    <% } else { %>
-      <a href="/answers/<%= answer.id %>/upvote" class="vote btn-up">
-    <% } %>
-      &nbsp;
+    <% var path = (answer.get("current_user_vote") > 0) ? "unvote" : "upvote"%>
+    <a href="/answers/<%= answer.id %>/<%= path %>" class="<%= path %>">
+      <i class="icon-up-dir"></i>
     </a>
     <br />
-    <% if (answer.get("current_user_vote") < 0) { %>
-      <a href="/answers/<%= answer.id %>/unvote" class="unvote btn-down">
-    <% } else { %>
-      <a href="/answers/<%= answer.id %>/downvote" class="vote btn-down">
-    <% } %>
-      &nbsp;
+    <% var path = (answer.get("current_user_vote") < 0) ? "unvote": "downvote"%>
+    <a href="/answers/<%= answer.id %>/<%= path %>" class="<%= path %>">
+      <i class="icon-down-dir"></i>
     </a>
   </div>
 </div>
 
-<div class="span10 answer-area">
-  <div class="answer-header">
-    <p><strong>
-      <% if (user) { %>
-        <% comma = (user.get("bio")) ? "," : "" %>
-        <a href = "#/users/<%= user.id %>" class="user-link">
-          <%= user.escape("name")%></a><%= comma %>
-        <%= user.escape("bio") %>
-      <% } else { %>
-        Anonymous
-      <% } %>
-    </strong></p>
-    <p class="votes-info">
-      <span class="vote-tally"><%= answer.escape('vote_tally') %></span>
-      <%= answer.escape('vote_tally') === 1 ? "vote" : "votes" %>
-    </p>
-  </div>
-  <p><%= answer.escape('text') %></p>
+<div class="span10 media-frame">
+  <hr />
+
+  <h4 class="title ellipsis">
+    <% if (user) { %>
+      <% comma = (user.get("bio")) ? "," : "" %>
+      <a href = "#/users/<%= user.id %>">
+        <%= user.escape("name")%></a><%= comma %>
+      <%= user.escape("bio") %>
+    <% } else { %>
+      Anonymous
+    <% } %>
+  </h4>
+
+  <p class="info">
+    <span class="vote-tally"><%= answer.escape('vote_tally') %></span>
+    <%= answer.escape('vote_tally') === 1 ? "vote" : "votes" %>
+  </p>
+
+  <p class="body"><%= answer.escape('text') %></p>
 </div>
 
 <div class="span1"></div>
-<br />

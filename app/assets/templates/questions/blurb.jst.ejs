@@ -1,4 +1,7 @@
-<a href="#/questions/<%= question.id %>">
-  <h4><%= question.escape('title') %></h4>
-</a>
-<p><%= question.escape('description') %>
+<div class="media-frame">
+  <hr />
+  <a href="#/questions/<%= question.id %>">
+    <h4 class="link-title"><%= question.escape('title') %></h4>
+  </a>
+  <p class="body"><%= question.escape('description') %>
+</div>

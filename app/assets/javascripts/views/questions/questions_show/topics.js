@@ -105,7 +105,7 @@ Clonora.Views.QuestionsShow.Topics = Clonora.Views.ShowEditSubView.extend({
 
   eventRemoveTopic: function(event) {
     event.preventDefault();
-    var id = $(event.target).data('id');
+    var id = $(event.currentTarget).data('id');
 
     var that = this;
     var topic = this.topics.get(id);

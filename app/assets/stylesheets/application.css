@@ -13,27 +13,24 @@
  *= require_tree .
  */
 
+// Basic Styles
+
+$base_color: black;
+$dark_blue: #19558d;
+$blue: #538dc2;
+$light_blue: #dfeaf4;
+
 body {
   padding-top: 40px;
-  color: #333;
+  color: lighten($base_color, 20%);
 }
 
-a {color: #19558d;}
-
-a.soft-link {color: #538dc2;}
-
-a.soft-link:hover {color: #19558d;}
-
-a.user-link {color: #333;}
-
 hr {
-  border-top-color: #c0c0c0;
-  margin-top: 0px;
-  margin-bottom: 8px;
+  border-top-color: lighten($base_color, 80%);
 }
 
 textarea.textarea {
-  width: 100%;
+  width: 97%;
 }
 
 #site-messages .accordion-body {
@@ -42,121 +39,9 @@ textarea.textarea {
 }
 
 #site-notice {
-  color: #333;
+  color: lighten($base_color, 20%);
   background-color: inherit;
   border-color: #d4d4d4;
-}
-
-#page-content {
-  clear: both;
-}
-
-li.topic-list-item { /* these styles hoisted directly from Quora's site */
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background-color: #dfeaf4;
-  margin: 0 3px 3px 0;
-}
-
-a.remove-topic {
-  font-weight: bold;
-
-  /* these styles hoisted directly from Quora's site */
-  color: #19558d;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  height: 18px;
-  width: 15px;
-  padding: 0;
-}
-
-a.remove-topic:hover {
-  text-decoration: none;
-  color: #dfeaf4;
-  background-color: #19558d;
-}
-
-a.btn-edit { /* these styles hoisted directly from Quora's site */
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px;
-  background: no-repeat left center
-    url(//d1vgw4v7ja2ido.cloudfront.net/-71768c4d60e467f5.gif);
-  font-size: 11px;
-  font-weight: normal;
-  letter-spacing: 0;
-  margin-left: 3px;
-  padding: 2px 6px 1px 18px;
-  color: #999;
-}
-
-a.btn-edit:hover {
-  text-decoration: none;
-  color: #406a24;
-  background-color: #c3dd82;
-  background-image: url(//d1vgw4v7ja2ido.cloudfront.net/-c2017b146db5ea2e.gif);
-}
-
-.vote-btns a { /* these styles hoisted directly from Quora's site */
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background-repeat: no-repeat;
-  background-position: left top;
-  clear: right;
-  float: right;
-  height: 17px;
-  margin-bottom: 1px;
-  width: 20px;
-}
-
-.vote-btns a:hover {
-  background-color: #19558d;
-  text-decoration: none;
-  background-position: left center;
-}
-
-.vote-btns a.btn-up {
-  background-image:
-    url(http://d1vgw4v7ja2ido.cloudfront.net/-7db7b7475aae5787.gif);
-}
-
-.vote-btns a.btn-down {
-  background-image:
-    url(http://d1vgw4v7ja2ido.cloudfront.net/-586a902693ebbe64.gif);
-}
-
-.vote-btns a.unvote {
-  background-color: #19558d;
-  text-decoration: none;
-  background-position: left center;
-}
-
-.answer-header {
-  line-height: 0.5em;
-}
-
-.vote-tally {
-  color: #666;
-  font-weight: bold;
-}
-
-.votes-info {
-  color: #999;
-}
-
-#logo {
-  background-color: #a82400;
-  color: white;
-  box-shadow: none;
-  text-shadow: none;
-  font-family: serif;
-}
-
-#logo:active {
-  background-color: #801b00;
 }
 
 #question_title {
@@ -164,8 +49,4 @@ a.btn-edit:hover {
   font-size: 17.5px;
   font-weight: bold;
   color: black;
-}
-
-.ui-autocomplete-loading {
-  background: white right center no-repeat url('http://jqueryui.com/resources/demos/autocomplete/images/ui-anim_basic_16x16.gif');
 }

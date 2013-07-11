@@ -1,17 +1,22 @@
-<ul class="inline">
+<ul class="inline topics-list">
   <strong>Topics:</strong>
   <% if (model.get('topics').isEmpty()) { %>
     <li>none</li>
   <% } %>
   <% model.get('topics').each(function(topic) { %>
-    <li class="topic-list-item">
-      <a href="#/topics/<%= topic.id %>"><%= topic.escape('title') %></a>
-      <a href="#" class="remove-topic" data-id="<%= topic.id %>">&times;</a>
+    <li class="topics-list-item">
+      <a class="topic-link" href="#/topics/<%= topic.id %>">
+        <%= topic.escape('title') %></a>
+      <a href="#" class="remove-topic" data-id="<%= topic.id %>">
+        <i class="icon-cancel"></i>
+      </a>
     </li>
   <% }); %>
 </ul>
 
-<input type="text" name="topic[title]" id="topic_title"
-  value="" placeholder="Enter Topic" required />
+<div class="form-horizontal">
+  <input type="text" name="topic[title]" id="topic_title"
+    value="" placeholder="Enter Topic" required />
 
-<button type="done" class="btn-primary cancel">Done</button>
+  <button type="done" class="btn-primary cancel">Done</button>
+</div>

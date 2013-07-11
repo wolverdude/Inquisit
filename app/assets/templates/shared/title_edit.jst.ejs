@@ -1,9 +1,11 @@
 <form action="#" method="get" accept-charset="utf-8">
   <formset>
-  <input type="text" name="<%= model.modelName %>[title]" id="<%= model.modelName %>_title"
-    value="<%= model.get('title') %>" />
+    <div class="form-horizontal">
+      <input type="text" name="<%= model.modelName %>[title]"
+        id="<%= model.modelName %>_title" value="<%= model.get('title') %>" />
 
-  <button type="button" class="btn cancel">Cancel</button>
-  <input type="submit" value="Update" class="btn-primary" />
+      <button type="button" class="btn cancel">Cancel</button>
+      <input type="submit" value="Update" class="btn-primary" />
+    </div>
   </formset>
 </form>
