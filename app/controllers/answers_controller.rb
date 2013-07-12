@@ -19,11 +19,12 @@ class AnswersController < ApplicationController
   end
 
   def index
-    @answers = Answer.where(:question_id => params[:question_id])
+    @answers = Answer.with_vote_info(current_user.id)
+                     .where(question_id: params[:question_id])
   end
 
   def show
-    @answer = Answer.find(params[:id])
+    @answer = Answer.with_vote_info(current_user.id).find(params[:id])
   end
 
   def update

@@ -22,6 +22,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @answers = @question.answers_with_vote_info(current_user.id).includes(:user)
   end
 
   def update

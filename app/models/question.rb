@@ -7,7 +7,7 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :asker, :title
 
-  def answers_with_vote_tally
-    Answer.with_vote_tally.where(:question_id => self.id)
+  def answers_with_vote_info(current_user_id)
+    Answer.with_vote_info(current_user_id).where(:question_id => self.id)
   end
 end

@@ -13,8 +13,4 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :bio
 
-  def get_vote_count(answer)
-    vote = self.votes.find_by_answer_id(answer.id)
-    vote.count if vote
-  end
 end
