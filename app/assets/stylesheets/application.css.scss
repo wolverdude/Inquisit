@@ -13,6 +13,8 @@
  *= require_tree .
  */
 
+$base_color: black;
+
 #site-messages .accordion-body {
   float: left;
   margin-left: 1em;
@@ -29,12 +31,16 @@
   color: white;
   font-family: Papyrus, fantasy;
   font-weight: bold;
+  font-size: 20px;
 
   box-shadow: none;
   text-shadow: none;
-  padding: 8px 6px 1px;
+  padding: .4em .35em .05em;
   margin: 5px 10px;
 
+  &:hover {
+    text-decoration: none;
+  }
   &:active {
     background-color: #801b00;
   }

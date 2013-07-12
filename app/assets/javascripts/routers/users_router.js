@@ -9,9 +9,9 @@ Inquisit.Routers.Users = Backbone.Router.extend({
   },
 
   show: function(id) {
-    var that = this
     var user = Inquisit.Models.User.findOrCreate({id: id});
 
+    var that = this
     user.fetch({
       success: function(user) {
         var view = new Inquisit.Views.UsersShow(user);
