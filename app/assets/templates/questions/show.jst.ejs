@@ -1,18 +1,18 @@
 <div class="row-fluid">
   <div class="span1"></div>
 
-  <div class="span11" id="question-block">
+  <div class="span11 header-frame" id="question-block">
 
     <div id="topics"></div>
-    <div id="title"></div>
+    <div id="title" class="title"></div>
     <div id="details"></div>
 
     <hr />
     <% var answersCount = question.get('answers').length %>
-    <p><strong>
+    <p class="info">
       <%= answersCount %>
       <%= answersCount === 1 ? "Answer" : "Answers" %>
-    </strong></p>
+    </p>
 
   </div>
 </div>

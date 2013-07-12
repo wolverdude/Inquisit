@@ -1,14 +1,23 @@
-<div id="topic-block">
+<div id="topic-block" class="header-frame">
 
-  <div id="title"></div>
+  <div id="title" class="title"></div>
   <div id="details"></div>
 
   <hr />
   <% var questionsCount = model.get('questions').length %>
-  <p><strong>
+  <p class="info">
     <%= questionsCount %>
     <%= questionsCount === 1 ? "Question" : "Questions" %>
-  </strong></p>
+  </p>
+  <div class="actions">
+    <a href="#/topics/<%= model.id %>/questions/new" class="btn">
+      New Question
+    </a>
+    <a href="#warning-modal" role="button" data-toggle="modal"
+      class="btn btn-danger">Delete Topic</a>
+  </div>
+
+  <div class="clearfix"></div>
 
 </div>
 

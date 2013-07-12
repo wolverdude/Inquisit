@@ -11,6 +11,22 @@
 
 <div class="container">
 
+  <!-- modal dialog for action confirmation -->
+  <div id="warning-modal" class="modal hide fade">
+    <div class="modal-header">
+      <button type="button" class="close icon-cancel"
+      data-dismiss="modal"></button>
+      <h3>Inquisit</h3>
+    </div>
+    <div class="modal-body">
+      <p id="warning-modal-message"></p>
+    </div>
+    <div class="modal-footer">
+      <button data-dismiss="modal" class="btn">Cancel</button>
+      <button data-dismiss="modal" class="btn btn-warning">Continue</button>
+    </div>
+  </div>
+
   <!-- collapsing div for site messages -->
   <div class="accordion" id="site-messages">
     <div id="collapse-alert" class="accordion-body collapse">

@@ -1,0 +1,46 @@
+<div id="user-block" class="header-frame">
+
+  <div id="name" class="title">
+    <h3>
+      <%= model.escape('name') %>
+      <% if (isCurrentUser) { %>
+        <a href="#" class="btn-edit" id="edit-name">
+          <i class="icon-pencil"></i> Edit</a>
+      <% } %>
+    </h3>
+  </div>
+  <div id="bio"></div>
+    <p>
+      <%= model.escape('bio') %>
+      <% if (isCurrentUser) { %>
+        <a href="#" class="btn-edit" id="edit-bio">
+          <i class="icon-pencil"></i> Edit</a>
+      <% } %>
+    </p>
+  <div id="topics"></div>
+
+  <hr />
+  <% var questionsCount = model.get('questions').length %>
+  <p class="info">
+    <%= questionsCount %>
+    <%= questionsCount === 1 ? "Question" : "Questions" %> Asked
+  </p>
+  <% var answersCount = model.get('answers').length %>
+  <p class="info">
+    <%= answersCount %>
+    <%= answersCount === 1 ? "Answer" : "Answers" %> Given
+  </p>
+
+  <div class="actions">
+    <% if (isCurrentUser) { %>
+      <a href="#warning-modal" role="button" data-toggle="modal"
+        class="btn btn-danger">Delete Your Account</a>
+    <% } %>
+  </div>
+
+  <div class="clearfix"></div>
+
+</div>
+
+<div id="questions-list"></div>
+

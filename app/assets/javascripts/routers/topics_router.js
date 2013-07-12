@@ -13,7 +13,7 @@ Inquisit.Routers.Topics = Backbone.Router.extend({
     var topic = Inquisit.Models.Topic.findOrCreate({id: id});
 
     topic.fetch({
-      success: function() {
+      success: function(topic) {
         var view = new Inquisit.Views.TopicsShow({
           model: topic
         });

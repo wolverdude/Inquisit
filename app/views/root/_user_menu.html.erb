@@ -3,7 +3,7 @@
     <strong><%= current_user.name %></strong>
   </a>
   <ul class="dropdown-menu">
-    <li><a tabindex="-1" href="#"><%= current_user.name %>'s Posts</a></li>
+    <li><a tabindex="-1" href="#/users/<%= current_user.id %>">Profile</a></li>
     <li>
       <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
     </li>

@@ -40,6 +40,30 @@ hr {
 
 // General Classes
 
+.header-frame {
+  .title {
+    color: $base_color;
+    font-weight: bold;
+    font-size: 17.5px;
+    line-height: 20px;
+    .title { // fighting bootstrap
+      color: $base_color;
+      font-weight: bold;
+      font-size: 17.5px;
+      line-height: 20px;
+    }
+  }
+  .info {
+    display: inline-block;
+    float: left;
+    font-weight: bold;
+  }
+  .actions {
+    display: inline-block;
+    float: right;
+  }
+}
+
 $media_font_size: 14px;
 $media_margin: 3px;
 
@@ -158,15 +182,6 @@ ul.topics-list {
 .vote-tally {
   color: lighten($base_color, 40%);
   font-weight: bold;
-}
-
-// Specific Elements
-
-#question_title {
-  line-height: 20px;
-  font-size: 17.5px;
-  font-weight: bold;
-  color: black;
 }
 
 // Bootstrap fix

@@ -4,7 +4,8 @@ Inquisit.Routers.Questions = Backbone.Router.extend({
     "": "index",
     "index": "index",
     "questions/new": "new",
-    "questions/:id": "show"
+    "questions/:id": "show",
+    "topics/:topic_id/questions/new": "new"
   },
 
   initialize: function(params) {
@@ -25,8 +26,17 @@ Inquisit.Routers.Questions = Backbone.Router.extend({
     });
   },
 
-  new: function() {
-    var view = new Inquisit.Views.QuestionsNew()
+  new: function(topic_id) {
+    var question = new Inquisit.Models.Question()
+
+    if (topic_id) {
+      var topic = Inquisit.Models.Topic.findOrCreate({id: topic_id})
+      question.get('topics').add(topic)
+    }
+
+    var view = new Inquisit.Views.QuestionsNew({
+      question: question
+    });
     this._swapView(view);
   },
 

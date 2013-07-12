@@ -6,8 +6,8 @@ Inquisit.Views.QuestionsNew = Backbone.View.extend({
     "submit form#new-question": "submit"
   },
 
-  initialize: function() {
-    this.question = new Inquisit.Models.Question()
+  initialize: function(params) {
+    _.extend(this, params)
   },
 
   render: function() {
