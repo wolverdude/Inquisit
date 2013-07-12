@@ -6,19 +6,11 @@ window.Inquisit = {
   initialize: function() {
     // get bootstrapped data
     var $currentUserEl = $('script#bootstrap-current-user');
-    var $questionsEl = $('script#bootstrap-questions');
-
     var currentUserData = JSON.parse($currentUserEl.html());
-    var questionsData = JSON.parse($questionsEl.html());
-
     $currentUserEl.remove();
-    $questionsEl.remove();
 
     Inquisit.currentUser = new Inquisit.Models.User(
       currentUserData, {parse: true}
-    );
-    Inquisit.questions = new Inquisit.Collections.Questions(
-      questionsData, {parse: true}
     );
 
     // include csrf token with every AJAX call
@@ -30,13 +22,21 @@ window.Inquisit = {
     });
 
     // start routers
-    Inquisit.questionsRouter = new Inquisit.Routers.Questions({
-      $el: $('#content')
-    });
-    Inquisit.topicsRouter = new Inquisit.Routers.Topics({
-      $el: $('#content')
+    Inquisit.routers = _(Inquisit.Routers).map(function(Router) {
+      return new Router({ $el: $('#content') });
     });
     Backbone.history.start();
+  },
+
+  showSiteMessage: function(cssSelector, timeout) {
+    var $el = $(cssSelector);
+    $el.addClass('in');
+
+    if (timeout) {
+      window.setTimeout(function() {
+        $el.collapse('hide');
+      }, timeout);
+    }
   }
 };
 

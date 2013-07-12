@@ -33,7 +33,6 @@ Inquisit.Views.QuestionsNew = Backbone.View.extend({
     this.question.save($form.serializeJSON().question, {
       wait: true,
       success: function(question) {
-        Inquisit.questions.add(question);
         Backbone.history.navigate("#/questions/" + question.id);
       }
     });

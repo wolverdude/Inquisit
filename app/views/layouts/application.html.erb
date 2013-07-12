@@ -38,17 +38,6 @@
 </div>
 
 <script type="text/javascript" charset="utf-8">
-  Inquisit.showSiteMessage = function(cssSelector, timeout) {
-    var $el = $(cssSelector);
-    $el.addClass('in');
-
-    if (timeout) {
-      window.setTimeout(function() {
-        $el.collapse('hide');
-      }, timeout);
-    }
-  }
-
   <% if alert %>
     Inquisit.showSiteMessage("#collapse-alert");
   <% end %>

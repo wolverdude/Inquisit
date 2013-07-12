@@ -6,4 +6,8 @@ class Question < ActiveRecord::Base
   attr_accessible :anonymous, :description, :title, :topic_ids
 
   validates_presence_of :asker, :title
+
+  def answers_with_vote_tally
+    Answer.with_vote_tally.where(:question_id => self.id)
+  end
 end

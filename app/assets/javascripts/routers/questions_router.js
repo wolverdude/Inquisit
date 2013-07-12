@@ -12,10 +12,17 @@ Inquisit.Routers.Questions = Backbone.Router.extend({
   },
 
   index: function() {
-    var view = new Inquisit.Views.QuestionsIndex({
-      questions: Inquisit.questions
+    var that = this;
+    var questions = new Inquisit.Collections.Questions();
+
+    questions.fetch({
+      success: function(questions) {
+        var view = new Inquisit.Views.QuestionsIndex({
+          questions: questions
+        });
+        that._swapView(view);
+      }
     });
-    this._swapView(view);
   },
 
   new: function() {
