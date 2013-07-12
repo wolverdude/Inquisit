@@ -11,7 +11,9 @@ Inquisit.Views.QuestionsNew = Backbone.View.extend({
   },
 
   render: function() {
-    var renderedContent = this.template();
+    var renderedContent = this.template({
+      model: this.question
+    });
     this.$el.html(renderedContent);
 
     this.$topicsEditEl = this.$el.find("#question_topics");
@@ -34,6 +36,10 @@ Inquisit.Views.QuestionsNew = Backbone.View.extend({
       wait: true,
       success: function(question) {
         Backbone.history.navigate("#/questions/" + question.id);
+      },
+      error: function(model, xhr) {
+        $('#site-alert').html(xhr.responseJSON);
+        Inquisit.showSiteMessage("#collapse-alert");
       }
     });
   },

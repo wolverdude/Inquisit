@@ -30,17 +30,17 @@
   <!-- collapsing div for site messages -->
   <div class="accordion" id="site-messages">
     <div id="collapse-alert" class="accordion-body collapse">
-      <div class="alert" id="site-alert">
+      <div class="alert">
         <a href="#collapse-alert" class="accordion-toggle close icon-cancel"
           data-toggle="collapse"></a>
-        <%= alert %>
+        <span id="site-alert"><%= alert %></span>
       </div>
     </div>
     <div id="collapse-notice" class="accordion-body collapse">
-      <div class="alert" id="site-notice">
+      <div class="alert">
         <a href="#collapse-notice" class="accordion-toggle close icon-cancel"
           data-toggle="collapse"></a>
-        <%= notice %>
+        <span id="site-notice"><%= notice %></span>
       </div>
     </div>
     <%= yield :site_messages %>

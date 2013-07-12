@@ -1,11 +1,14 @@
 <form action="#" method="get" accept-charset="utf-8">
-  <input type="text" name="<%= model.modelName %>[title]" autofocus
-    id="<%= model.modelName %>_title" value="<%= model.get('title') %>"
-    class="title full-width" />
-
   <div class="pull-right">
     <button type="button" class="btn cancel">Cancel</button>
     <input type="submit" value="Update" class="btn btn-primary" />
   </div>
+
+  <div class="fill-left">
+    <input type="text" name="<%= model.modelName %>[title]" autofocus
+      id="<%= model.modelName %>_title" value="<%= model.get('title') %>"
+      class="title full-width" />
+   </div>
+
   <div class="clearfix"></div>
 </form>

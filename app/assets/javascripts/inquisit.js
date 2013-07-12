@@ -30,7 +30,7 @@ window.Inquisit = {
 
   showSiteMessage: function(cssSelector, timeout) {
     var $el = $(cssSelector);
-    $el.addClass('in');
+    $el.collapse('show');
 
     if (timeout) {
       window.setTimeout(function() {

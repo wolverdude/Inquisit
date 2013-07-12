@@ -102,6 +102,11 @@ $media_margin: 3px;
   }
 }
 
+.fill-left {
+  overflow: hidden;
+  padding-right: 10px;
+}
+
 .ellipsis {
   @include ellipsis_box;
 }
@@ -187,4 +192,8 @@ ul.topics-list {
 // Bootstrap fix
 .navbar-search .btn {
   margin-top: 0;
+}
+
+#topics .form-inline {
+  margin-bottom: 20px;
 }

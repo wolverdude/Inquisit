@@ -14,22 +14,26 @@
       <%= model.escape('bio') %>
       <% if (isCurrentUser) { %>
         <a href="#" class="btn-edit" id="edit-bio">
-          <i class="icon-pencil"></i> Edit</a>
+          <i class="icon-pencil"></i>
+          <%= (model.get('bio')) ? "Edit" : "Add a Bio." %>
+        </a>
       <% } %>
     </p>
   <div id="topics"></div>
 
   <hr />
-  <% var questionsCount = model.get('questions').length %>
-  <p class="info">
-    <%= questionsCount %>
-    <%= questionsCount === 1 ? "Question" : "Questions" %> Asked
-  </p>
-  <% var answersCount = model.get('answers').length %>
-  <p class="info">
-    <%= answersCount %>
-    <%= answersCount === 1 ? "Answer" : "Answers" %> Given
-  </p>
+  <div class="info">
+    <% var questionsCount = model.get('questions').length %>
+    <p>
+      <%= questionsCount %>
+      <%= questionsCount === 1 ? "Question" : "Questions" %> Asked
+    </p>
+    <% var answersCount = model.get('answers').length %>
+    <p>
+      <%= answersCount %>
+      <%= answersCount === 1 ? "Answer" : "Answers" %> Given
+    </p>
+  </div>
 
   <div class="actions">
     <% if (isCurrentUser) { %>

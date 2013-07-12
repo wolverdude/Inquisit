@@ -17,7 +17,8 @@
     <div class="control-group">
       <label class="control-label" for="question_title">Question</label>
       <div class="controls">
-        <input type="text" name="question[title]" value="" required
+        <input type="text" name="question[title]" class="full-width"
+          value="<%= model.escape('title') %>" required
           id="question_title" placeholder="Type Question Here" />
       </div>
     </div>
@@ -27,7 +28,7 @@
       <div class="controls">
         <textarea name="question[description]" id="question_description"
           placeholder="Optional: Provide more details about your question"
-          class="full-width" ></textarea>
+          class="full-width"><%= model.escape('description') %></textarea>
       </div>
     </div>
 

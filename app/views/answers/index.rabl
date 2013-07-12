@@ -1,5 +1,5 @@
 collection @answers
 attributes *Answer.column_names, :vote_tally, :current_user_vote
 child :user do
-  extends "users/show"
+  extends "users/show_attrs"
 end

@@ -26,7 +26,7 @@ $base_color: black;
   #error_explanation {
     margin-right: 20px;
   }
-  #site-notice {
+  #notice-collapse .alert {
     color: lighten($base_color, 20%);
     background-color: inherit;
     border-color: #d4d4d4;
