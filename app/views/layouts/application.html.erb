@@ -30,19 +30,20 @@
   <!-- collapsing div for site messages -->
   <div class="accordion" id="site-messages">
     <div id="collapse-alert" class="accordion-body collapse">
-      <p class="alert" id="site-alert">
-        <strong><%= alert %></strong>
-        <a href="#collapse-alert" class="accordion-toggle"
-          data-toggle="collapse">dismiss</a>
-      </p>
+      <div class="alert" id="site-alert">
+        <a href="#collapse-alert" class="accordion-toggle close icon-cancel"
+          data-toggle="collapse"></a>
+        <%= alert %>
+      </div>
     </div>
     <div id="collapse-notice" class="accordion-body collapse">
-      <p class="alert" id="site-notice">
-        <strong><%= notice %></strong>
-        <a href="#collapse-notice" class="accordion-toggle"
-          data-toggle="collapse">dismiss</a>
-      </p>
+      <div class="alert" id="site-notice">
+        <a href="#collapse-notice" class="accordion-toggle close icon-cancel"
+          data-toggle="collapse"></a>
+        <%= notice %>
+      </div>
     </div>
+    <%= yield :site_messages %>
   </div>
 
   <div class="clearfix"></div>
@@ -57,10 +58,12 @@
   <% if alert %>
     Inquisit.showSiteMessage("#collapse-alert");
   <% end %>
+
   <% if notice %>
     Inquisit.showSiteMessage("#collapse-notice", 3500);
   <% end %>
 
+  <%= yield :javascript %>
 </script>
 
 </body>

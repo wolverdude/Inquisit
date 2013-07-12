@@ -15,15 +15,22 @@
 
 $base_color: black;
 
-#site-messages .accordion-body {
-  float: left;
-  margin-left: 1em;
-}
-
-#site-notice {
-  color: lighten($base_color, 20%);
-  background-color: inherit;
-  border-color: #d4d4d4;
+#site-messages {
+  & > .accordion-body {
+    float: left;
+    margin-left: 1em;
+  }
+  .alert {
+    font-weight: bold;
+  }
+  #error_explanation {
+    margin-right: 20px;
+  }
+  #site-notice {
+    color: lighten($base_color, 20%);
+    background-color: inherit;
+    border-color: #d4d4d4;
+  }
 }
 
 #logo {

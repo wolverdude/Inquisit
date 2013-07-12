@@ -9,7 +9,7 @@ class Answer < ActiveRecord::Base
   def self.with_vote_info(current_user_id)
     select_clause = <<-SQL
         answers.*,
-        SUM(votes.count) AS vote_tally,
+        COALESCE(SUM(votes.count), 0) AS vote_tally,
         SUM(
           CASE WHEN votes.user_id = ?
             THEN votes.count
@@ -21,5 +21,14 @@ class Answer < ActiveRecord::Base
     Answer.select(sanitize_sql_array([select_clause, current_user_id])) \
           .joins('LEFT JOIN votes ON answers.id = votes.answer_id') \
           .group('answers.id')
+  end
+
+  def get_vote_info(current_user_id)
+    answer = Answer.with_vote_info(current_user_id).find(self.id)
+
+    self.vote_tally = answer.vote_tally
+    self.current_user_vote = answer.current_user_vote
+
+    self
   end
 end

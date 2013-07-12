@@ -6,6 +6,7 @@ class AnswersController < ApplicationController
     @answer = current_user.answers.build(params[:answer])
 
     if @answer.save
+      @answer.get_vote_info
       render "show"
     else
       render :json => @answer.errors.full_messages, :status => 422
@@ -30,6 +31,7 @@ class AnswersController < ApplicationController
   def update
     @answer = Answer.find(params[:id])
     if @answer.update_attributes(params[:answer])
+      @answer.get_vote_info
       render "show"
     else
       render :json => @answer.errors.full_messages, :status => 422

@@ -39,7 +39,3 @@ window.Inquisit = {
     }
   }
 };
-
-$(document).ready(function(){
-  Inquisit.initialize();
-});
