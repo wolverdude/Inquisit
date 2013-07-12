@@ -23,12 +23,4 @@ class Answer < ActiveRecord::Base
           .group('answers.id')
   end
 
-  def get_vote_info(current_user_id)
-    answer = Answer.with_vote_info(current_user_id).find(self.id)
-
-    self.vote_tally = answer.vote_tally
-    self.current_user_vote = answer.current_user_vote
-
-    self
-  end
 end
