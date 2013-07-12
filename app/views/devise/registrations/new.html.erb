@@ -1,4 +1,4 @@
-<% content_for :site_messages %>
+<%= content_for :site_messages do %>
   <div id="collapse-devise-error" class="accordion-body collapse">
     <div class="alert" id="site-alert">
       <a href="#collapse-devise-error" data-toggle="collapse"
@@ -8,8 +8,8 @@
   </div>
 <% end %>
 
-<% content_for :javascript %>
-  <% unless devise_error_messages!.empty? %>
+<% unless devise_error_messages!.empty? %>
+  <%= content_for :javascript do %>
     Inquisit.showSiteMessage("#collapse-devise-error");
   <% end %>
 <% end %>
