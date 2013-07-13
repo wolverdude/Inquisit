@@ -21,6 +21,14 @@ window.Inquisit = {
       }
     });
 
+    // display every AJAX error
+    var $alertEl = $('#site-alert')
+    $(document).ajaxError(function(event, xhr) {
+      $alertEl.html(xhr.responseJSON);
+      Inquisit.showSiteMessage("#collapse-alert");
+    });
+
+
     // start routers
     Inquisit.routers = _(Inquisit.Routers).map(function(Router) {
       return new Router({ $el: $('#content') });

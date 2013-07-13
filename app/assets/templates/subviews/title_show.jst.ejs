@@ -1,6 +1,7 @@
-<h4 id="<%= model.modelName %>_title">
-  <%= model.get('title') %>
-  <a href="#" class="btn-edit" id="edit-title">
-  <i class="icon-pencil"></i> Edit
+<p id="<%= model.modelName %>_<%= attribute %>">
+  <%= model.escape(attribute) %>
+  <a href="#" class="btn-edit" id="edit-<%= attribute %>">
+    <i class="icon-pencil"></i>
+    <%= (model.get(attribute)) ? "Edit" : "Add a " + attribute %>
   </a>
-</h4>
+</p>

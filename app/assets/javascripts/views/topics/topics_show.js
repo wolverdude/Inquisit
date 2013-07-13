@@ -17,8 +17,8 @@ Inquisit.Views.TopicsShow = Backbone.View.extend({
 
     var that = this;
     _([
-      ['div#title', Inquisit.Views.SubViews.Title, {model: this.model}],
-      ['div#details', Inquisit.Views.SubViews.Details, {model: this.model}],
+      ['div#title', Inquisit.Views.SubViews.Title, {model: this.model, attribute: 'title'}],
+      ['div#details', Inquisit.Views.SubViews.Details, {model: this.model, attribute: 'details'}],
       ['div#questions-list', Inquisit.Views.QuestionsIndex, {
         questions: this.model.get('questions')
       }]

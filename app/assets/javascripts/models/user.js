@@ -4,12 +4,14 @@ Inquisit.Models.User = Backbone.RelationalModel.extend({
     type: Backbone.HasMany,
     key: 'questions',
     relatedModel: "Inquisit.Models.Question",
-    includeInJSON: false
+    includeInJSON: false,
+    parse: true
   }, {
     type: Backbone.HasMany,
     key: 'answers',
     relatedModel: "Inquisit.Models.Answer",
-    includeInJSON: false
+    includeInJSON: false,
+    parse: true
   }],
 
   parse: function(resp) {

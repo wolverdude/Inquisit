@@ -15,10 +15,10 @@ Inquisit.Views.SubViews.Title = Inquisit.Views.ShowEditSubView.extend({
 
     var that = this;
     this.model.save($form.serializeJSON(), {
+      wait: true,
       success: function() {
         that.renderShow();
-      },
-      wait: true
+      }
     });
   }
 

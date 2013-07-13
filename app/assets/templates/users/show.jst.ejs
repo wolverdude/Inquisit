@@ -9,7 +9,7 @@
       <% } %>
     </h3>
   </div>
-  <div id="bio"></div>
+  <div id="bio">
     <p>
       <%= model.escape('bio') %>
       <% if (isCurrentUser) { %>
@@ -19,20 +19,11 @@
         </a>
       <% } %>
     </p>
+  </div>
   <div id="topics"></div>
 
   <hr />
   <div class="info">
-    <% var questionsCount = model.get('questions').length %>
-    <p>
-      <%= questionsCount %>
-      <%= questionsCount === 1 ? "Question" : "Questions" %> Asked
-    </p>
-    <% var answersCount = model.get('answers').length %>
-    <p>
-      <%= answersCount %>
-      <%= answersCount === 1 ? "Answer" : "Answers" %> Given
-    </p>
   </div>
 
   <div class="actions">
@@ -46,5 +37,16 @@
 
 </div>
 
-<div id="questions-list"></div>
+<% var questionsCount = model.get('questions').length %>
+<h3>
+  <%= questionsCount %>
+  <%= questionsCount === 1 ? "Question" : "Questions" %> Asked
+</h3>
+<ul id="questions-list" class="unstyled"></ul>
 
+<% var answersCount = model.get('answers').length %>
+<h3>
+  <%= answersCount %>
+  <%= answersCount === 1 ? "Answer" : "Answers" %> Given
+</h3>
+<ul id="answers-list" class="unstyled"></ul>

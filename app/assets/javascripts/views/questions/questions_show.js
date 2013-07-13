@@ -25,9 +25,9 @@ Inquisit.Views.QuestionsShow = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     _([
-      ['div#topics', Inquisit.Views.SubViews.Topics],
-      ['div#title', Inquisit.Views.SubViews.Title],
-      ['div#details', Inquisit.Views.SubViews.Details]
+      ['div#topics', Inquisit.Views.SubViews.Topics, {attribute: 'topics'}],
+      ['div#title', Inquisit.Views.SubViews.Title, {attribute: 'title'}],
+      ['div#details', Inquisit.Views.SubViews.Details, {attribute: 'details'}]
     ]).each(function(subViewParams) {
       that._addSubView.apply(that, subViewParams)
     });
@@ -67,7 +67,7 @@ Inquisit.Views.QuestionsShow = Backbone.View.extend({
 
   _addSubView: function(cssSelector, View, binding) {
     var $el = this.$el.find(cssSelector);
-    view = new View({model: this.question});
+    view = new View(_.extend({model: this.question}, binding));
     $el.html(view.renderShow().$el);
 
     this.subViews.push(view);

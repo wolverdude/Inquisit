@@ -4,7 +4,7 @@ Inquisit::Application.routes.draw do
   match "index" => "root#index"
 
   devise_for :users
-  resources :users, :only => [:show]
+  resources :users, :only => [:show, :update]
 
   resources :answers, :except => [:create, :edit, :new] do
     post "upvote" => "votes#upvote"

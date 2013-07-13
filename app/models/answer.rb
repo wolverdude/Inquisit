@@ -6,6 +6,7 @@ class Answer < ActiveRecord::Base
 
   validates_presence_of :user, :question_id, :text
 
+  ## gets answers with sum of votes and what the current user's vote is.
   def self.with_vote_info(current_user_id)
     select_clause = <<-SQL
         answers.*,

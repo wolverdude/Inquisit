@@ -1,13 +1,13 @@
 <form action="#" method="get" accept-charset="utf-8">
   <div class="pull-right">
     <button type="button" class="btn cancel">Cancel</button>
-    <input type="submit" value="Update" class="btn btn-primary" />
+    <button type="submit" class="btn btn-primary">Update</button>
   </div>
 
   <div class="fill-left">
-    <input type="text" name="<%= model.modelName %>[title]" autofocus
-      id="<%= model.modelName %>_title" value="<%= model.get('title') %>"
-      class="title full-width" />
+    <input type="text" name="<%= model.modelName %>[<%= attribute %>]"
+      id="<%= model.modelName %>_<%= attribute %>" autofocus
+      value="<%= model.escape(attribute) %>" class="full-width" />
    </div>
 
   <div class="clearfix"></div>
