@@ -1,0 +1,21 @@
+Wed, 17 Jul 2013 15:03:03 -0700
+doc/README_FOR_APP	Wed, 17 Jul 2013 11:57:11 -0700
+app/controllers/answers_controller.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/controllers/application_controller.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/controllers/questions_controller.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/controllers/root_controller.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/controllers/topics_controller.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/controllers/users_controller.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/controllers/votes_controller.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/helpers/answers_helper.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/helpers/application_helper.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/helpers/questions_helper.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/helpers/root_helper.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/helpers/topics_helper.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/helpers/users_helper.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/helpers/votes_helper.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/models/answer.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/models/question.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/models/topic.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/models/user.rb	Wed, 17 Jul 2013 11:57:11 -0700
+app/models/vote.rb	Wed, 17 Jul 2013 11:57:11 -0700
