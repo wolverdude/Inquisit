@@ -16,3 +16,9 @@
 
 # Ignore annoying apple files.
 *.DS_Store
+
+# Ignore files created for Linux Markdown compatibility
+*.mdown
+
+# Ignore database.yml to keep passwords safe.
+/config/database.yml
