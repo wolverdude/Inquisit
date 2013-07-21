@@ -6,7 +6,7 @@ Inquisit.Routers.Users = Inquisit.Routers.Base.extend({
 
   usersShow: function(id) {
     var user = Inquisit.Models.User.findOrCreate({id: id});
-    this._show(Inquisit.Views.UsersShow, topic);
+    this._show(Inquisit.Views.UsersShow, user);
   }
 
 });
