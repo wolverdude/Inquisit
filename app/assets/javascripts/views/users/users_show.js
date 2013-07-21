@@ -24,7 +24,6 @@ Inquisit.Views.UsersShow = Backbone.View.extend({
       attribute: 'bio'
     });
 
-    debugger
     var $questionsList = this.$el.find('#questions-list');
     var $answersList = this.$el.find('#answers-list');
     var that = this;

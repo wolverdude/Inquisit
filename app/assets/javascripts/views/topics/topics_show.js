@@ -2,8 +2,8 @@ Inquisit.Views.TopicsShow = Backbone.View.extend({
 
   template: JST['topics/show'],
 
-  initialize: function(params) {
-    _.extend(this, params);
+  initialize: function(model) {
+    this.model = model
     this.subViews = _([]);
   },
 

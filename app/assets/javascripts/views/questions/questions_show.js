@@ -6,8 +6,8 @@ Inquisit.Views.QuestionsShow = Backbone.View.extend({
     "submit form#new-answer": "newAnswer"
   },
 
-  initialize: function(params) {
-    _.extend(this, params);
+  initialize: function(question) {
+    this.question = question
     this.listenTo(this.question.get('answers'), 'add', this.render);
     this.listenTo(this.question.get('answers'), 'remove', this.render);
     this.subViews = _([]);
@@ -62,7 +62,7 @@ Inquisit.Views.QuestionsShow = Backbone.View.extend({
   _removeSubViews: function() {
     this.subViews.each(function(subView) {
       subView.remove();
-    })
+    });
   },
 
   _addSubView: function(cssSelector, View, binding) {
@@ -74,3 +74,15 @@ Inquisit.Views.QuestionsShow = Backbone.View.extend({
     return view;
   }
 });
+
+Inquisit.Views.QuestionsShow.prototype.stopListening = function() {
+  Backbone.View.prototype.stopListening.apply(this, arguments);
+
+  if (arguments.length === 0) {
+    this.subViews.each(function(subView) {
+      subView.stopListening();
+    });
+  }
+}
+
+

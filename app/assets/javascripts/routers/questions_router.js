@@ -1,18 +1,14 @@
-Inquisit.Routers.Questions = Backbone.Router.extend({
+Inquisit.Routers.Questions = Inquisit.Routers.Base.extend({
 
   routes: {
-    "": "index",
-    "index": "index",
-    "questions/new": "new",
-    "questions/:id": "show",
-    "topics/:topic_id/questions/new": "new"
+    "": "questionsIndex",
+    "questions": "questionsIndex",
+    "questions/new": "questionsNew",
+    "questions/:id": "questionsShow",
+    "topics/:topic_id/questions/new": "questionsNew",
   },
 
-  initialize: function(params) {
-    _.extend(this, params);
-  },
-
-  index: function() {
+  questionsIndex: function() {
     var that = this;
     var questions = new Inquisit.Collections.Questions();
 
@@ -26,7 +22,7 @@ Inquisit.Routers.Questions = Backbone.Router.extend({
     });
   },
 
-  new: function(topic_id) {
+  questionsNew: function(topic_id) {
     var question = new Inquisit.Models.Question()
 
     if (topic_id) {
@@ -40,24 +36,9 @@ Inquisit.Routers.Questions = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  show: function(id) {
-    var that = this
+  questionsShow: function(id) {
     var question = Inquisit.Models.Question.findOrCreate({id: id});
-
-    question.fetch({
-      success: function() {
-        var view = new Inquisit.Views.QuestionsShow({
-          question: question
-        });
-        that._swapView(view);
-      }
-    });
-  },
-
-  _swapView: function(newView) {
-    if (this.currentView) this.currentView.remove();
-    this.currentView = newView;
-    this.$el.html(this.currentView.render().$el);
+    this._show(Inquisit.Views.QuestionsShow, question);
   }
 
 });

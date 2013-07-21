@@ -1,29 +1,12 @@
-Inquisit.Routers.Users = Backbone.Router.extend({
+Inquisit.Routers.Users = Inquisit.Routers.Base.extend({
 
   routes: {
-   "users/:id": "show"
+    "users/:id": "usersShow"
   },
 
-  initialize: function(params) {
-    _.extend(this, params);
-  },
-
-  show: function(id) {
+  usersShow: function(id) {
     var user = Inquisit.Models.User.findOrCreate({id: id});
-
-    var that = this
-    user.fetch({
-      success: function(user) {
-        var view = new Inquisit.Views.UsersShow(user);
-        that._swapView(view);
-      }
-    });
-  },
-
-  _swapView: function(newView) {
-    if (this.currentView) this.currentView.remove();
-    this.currentView = newView;
-    this.$el.html(this.currentView.render().$el);
+    this._show(Inquisit.Views.UsersShow, topic);
   }
 
 });
