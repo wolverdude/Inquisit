@@ -50,8 +50,14 @@ Inquisit.Views.QuestionsShow = Backbone.View.extend({
     var $form = $(event.target)
 
     this.question.get('answers').create(
-      $form.serializeJSON().answer,
-      {url: $form.attr('action'), wait: true}
+      $form.serializeJSON().answer, {
+        wait: true,
+        url: $form.attr('action'),
+        success: function(answer) {
+          // reset url to normal
+          answer.url = Backbone.Model.prototype.url
+        }
+      }
     );
   },
 
@@ -74,15 +80,3 @@ Inquisit.Views.QuestionsShow = Backbone.View.extend({
     return view;
   }
 });
-
-Inquisit.Views.QuestionsShow.prototype.stopListening = function() {
-  Backbone.View.prototype.stopListening.apply(this, arguments);
-
-  if (arguments.length === 0) {
-    this.subViews.each(function(subView) {
-      subView.stopListening();
-    });
-  }
-}
-
-

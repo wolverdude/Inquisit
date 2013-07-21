@@ -5,7 +5,7 @@ This is an imitation of quora.com. I built it from the ground using these techno
 * [Ruby on Rails](http://rubyonrails.org/)
 * [PostgreSQL](http://www.postgresql.org/)
 * [Backbone.js](http://backbonejs.org/)
-* [Backbone-relational.js](https://github.com/PaulUithol/Backbone-relational)
+* [Backbone-relational.js](http://backbonerelational.org/)
 * [Twitter Bootstrap](http://twitter.github.io/bootstrap/)
 * [Devise](https://github.com/plataformatec/devise).
 

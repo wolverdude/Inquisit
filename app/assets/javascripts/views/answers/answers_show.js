@@ -10,41 +10,55 @@ Inquisit.Views.AnswersShow = Backbone.View.extend({
   },
 
   events: {
-    "click a.upvote": "vote",
-    "click a.downvote": "vote",
+    "click a.upvote": "upvote",
+    "click a.downvote": "downvote",
     "click a.unvote": "unvote"
   },
 
   render: function() {
-    renderedContent = this.template({
+    var user = this.answer.get('user')
+    var renderedContent = this.template({
       answer: this.answer,
-      user: this.answer.get('user')
+      user: user,
+      isCurrentUser: (user === Inquisit.currentUser)
     });
 
     this.$el.addClass("row-fluid").html(renderedContent);
     return this;
   },
 
-  vote: function(event) {
+  upvote: function(event) {
     event.preventDefault();
-    var that = this;
+    this._vote(event, 1)
+  },
 
-    $.ajax({
-      type: "POST",
-      url: $(event.currentTarget).attr('href'),
-      success: that.answer.fetch.bind(that.answer)
-    });
+  downvote: function(event) {
+    event.preventDefault();
+    this._vote(event, -1)
   },
 
   unvote: function(event) {
     event.preventDefault();
-    var that = this;
+    this._vote(event, 0, "DELETE")
+  },
 
+  _vote: function(event, newVote, requestType="Post") {
+    this._recountVote(newVote)
+
+    var that = this;
     $.ajax({
-      type: "DELETE",
+      type: requestType,
       url: $(event.currentTarget).attr('href'),
-      success: that.answer.fetch.bind(that.answer)
+      success: that.answer.fetch.bind(that.answer),
+      error: that.answer.fetch.bind(that.answer)
     });
+  },
+
+  _recountVote: function(newVote) {
+    var oldVote = this.answer.get('current_user_vote');
+    var oldTally = this.answer.get('vote_tally');
+    var newTally = oldTally - oldVote + newVote
+    this.answer.set({vote_tally: newTally, current_user_vote: newVote})
   }
 
 });

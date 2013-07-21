@@ -1,15 +1,17 @@
 <div class="span1">
-  <div class="vote-btns pull-right">
-    <% var path = (answer.get("current_user_vote") > 0) ? "unvote" : "upvote"%>
-    <a href="/answers/<%= answer.id %>/<%= path %>" class="<%= path %>">
-      <i class="icon-up-dir"></i>
-    </a>
-    <br />
-    <% var path = (answer.get("current_user_vote") < 0) ? "unvote": "downvote"%>
-    <a href="/answers/<%= answer.id %>/<%= path %>" class="<%= path %>">
-      <i class="icon-down-dir"></i>
-    </a>
-  </div>
+  <% if (!isCurrentUser) { %>
+    <div class="vote-btns pull-right">
+      <% var path = (answer.get("current_user_vote") > 0) ? "unvote" : "upvote"%>
+      <a href="/answers/<%= answer.id %>/<%= path %>" class="<%= path %>">
+        <i class="icon-up-dir"></i>
+      </a>
+      <br />
+      <% var path = (answer.get("current_user_vote") < 0) ? "unvote": "downvote"%>
+      <a href="/answers/<%= answer.id %>/<%= path %>" class="<%= path %>">
+        <i class="icon-down-dir"></i>
+      </a>
+    </div>
+  <% } %>
 </div>
 
 <div class="span10 media-frame">

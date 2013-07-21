@@ -5,8 +5,7 @@ Inquisit.Routers.Topics = Inquisit.Routers.Base.extend({
   },
 
   topicsShow: function(id) {
-    this._stopListening();
-    var topic = Inquisit.Models.Topic.findOrCreate({id: id});
+    var topic = Inquisit.Models.Topic.findOrCreate({id: id}, {silent: true});
     this._show(Inquisit.Views.TopicsShow, topic);
   }
 

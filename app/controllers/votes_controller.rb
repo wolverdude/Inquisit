@@ -19,6 +19,12 @@ class VotesController < ApplicationController
   private
 
   def vote(count)
+    answer = Answer.find(params[:answer_id])
+    if answer.user_id == current_user.id
+      render :json => ["cannot vote on your own answer"], :status => 403
+      return
+    end
+
     @vote = current_user.votes.find_by_answer_id(params[:answer_id])
     if @vote
       @vote.count = count
