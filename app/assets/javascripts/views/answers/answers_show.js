@@ -42,12 +42,12 @@ Inquisit.Views.AnswersShow = Backbone.View.extend({
     this._vote(event, 0, "DELETE")
   },
 
-  _vote: function(event, newVote, requestType="Post") {
+  _vote: function(event, newVote, requestType) {
     this._recountVote(newVote)
 
     var that = this;
     $.ajax({
-      type: requestType,
+      type: (requestType || "Post"),
       url: $(event.currentTarget).attr('href'),
       success: that.answer.fetch.bind(that.answer),
       error: that.answer.fetch.bind(that.answer)
