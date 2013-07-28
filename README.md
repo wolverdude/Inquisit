@@ -32,6 +32,7 @@ This is an imitation of quora.com. I built it from the ground using these techno
   * You cannot instantiate the same object twice. This makes sense, but it throws an error when you try to do this instead of merging the two objects. There is a way to do this, but only if you have the object's id.  I didn't, so I had to come up with a [workaround](https://github.com/PaulUithol/Backbone-relational/issues/355).
   * There's a weird [glitch](http://stackoverflow.com/questions/15117035/backbone-fires-add-event-after-sort-on-backbone-relational-collection) where backbone-relational triggers an event in my [Topics sub-view](https://github.com/wolverdude/Inquisit/blob/master/app/assets/javascripts/views/subviews/topics.js) from my [Topics router](https://github.com/wolverdude/Inquisit/blob/master/app/assets/javascripts/routers/topics_router.js). Simple to fix, but hard to track down.
 * There was a 3n+1 queries problem in my [Answers model](https://github.com/wolverdude/Inquisit/blob/master/app/models/answer.rb). To solve it, I had to write a farily complex SQL query that I wrote about in [my blog](http://wolvman.tumblr.com/post/55236373131/kicking-n-1s-butt-with-custom-rails-queries-week-9).
+* The font I chose for the logo wasn't supported on most browsers, so I had to force-load it with CSS3 @font-face.
 * Immitating (not copying) Quora.com's [styling](http://wolvman.tumblr.com/post/55132894770/styling-in-place-week-9-day-3).
 
 ## [Seriously, try it out!](//inquisit.herokuapp.com/users/sign_in)

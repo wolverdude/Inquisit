@@ -15,6 +15,12 @@
 
 $base_color: black;
 
+@font-face
+{
+  font-family: Papyrus;
+  src: url('Papyrus-Regular.ttf') format('truetype');
+}
+
 #site-messages {
   & > .accordion-body {
     float: left;
@@ -36,13 +42,13 @@ $base_color: black;
 #logo {
   background-color: #a82400;
   color: white;
-  font-family: Papyrus, fantasy;
+  font-family: Papyrus;
   font-weight: bold;
   font-size: 20px;
 
   box-shadow: none;
   text-shadow: none;
-  padding: .4em .35em .05em;
+  padding: .3em .35em .15em;
   margin: 5px 10px;
 
   &:hover {
