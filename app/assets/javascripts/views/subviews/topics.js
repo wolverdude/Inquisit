@@ -22,6 +22,7 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
   },
 
   renderEdit: function() {
+    var typeaheadTopics = new Inquisit.Collections.Topics()
     var self = this;
 
     this._render(this.editTemplate);
@@ -32,25 +33,33 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
 
       // Get topics from server matching what has been typed in so far.
       source: function(term, process) {
-        $.get("/topics", {term: term}, function(topicsData) {
-          self.typeAheadTopics = new Inquisit.Collections.Topics()
-          var matchList = [];
+        typeaheadTopics.fetch({
 
-          // Filter out topics that have already been tagged on this question.
-          _(topicsData).each(function(topicData) {
-            if (!self.topics.findWhere(topicData.topic)) {
-              var topic = Inquisit.Models.Topic.findOrCreate(
-                topicData, {parse: true}
-              );
-              self.typeAheadTopics.add(topic);
-              matchList.push(topic.get('title'));
+          url: "/topics",
+          data: {term: term, question_id: self.model.id},
+          reset: true,
+
+          success: function(topics) {
+            var matchList = topics.map(function(topic) {
+              return topic.get('title');
+            });
+
+            var termInMatchList = _(matchList).any(function(topicTitle) {
+              return (topicTitle === term);
+            });
+
+            var termInQuestionTopics = self.topics.any(function(topic) {
+              return (topic.get('title') === term);
+            });
+
+            // Add option to create new topic.
+            if (!termInMatchList && !termInQuestionTopics) {
+              if (matchList.length === 8) { matchList.pop() }
+              matchList.push('Create Topic: "' + term + '"');
             }
-          });
 
-          // Add option to create new topic.
-          matchList.push('Create Topic: "' + term + '"');
-
-          process(matchList);
+            process(matchList);
+          }
         });
       },
 
@@ -64,7 +73,7 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
           });
 
         } else { // Add existing topic to question.
-          var topic = self.typeAheadTopics.findWhere({title: title});
+          var topic = typeaheadTopics.findWhere({title: title});
 
           self.topics.add(topic);
           topic.save({}, {

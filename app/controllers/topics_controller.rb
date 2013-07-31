@@ -25,11 +25,12 @@ class TopicsController < ApplicationController
 
   def index
     if params.has_key?(:term)
-      matcher = "%#{params[:term]}%"
-      @topics = Topic.where("title LIKE ?", matcher).limit(10)
+      query = Topic.match(params[:term], params[:question_id])
     else
-      @topics = Topic.limit(10)
+      query = Topic
     end
+
+    @topics = query.limit(8)
   end
 
   def show
