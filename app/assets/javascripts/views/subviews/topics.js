@@ -9,67 +9,72 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
     "click a.remove-topic": "eventRemoveTopic"
   },
 
+  // Initialize with binding that will be passed to render functions.
   initialize: function(binding) {
     this.binding = binding;
     this.model = binding.model;
     this.topics = binding.model.get('topics');
 
-    var that = this;
+    var self = this;
     _(['add', 'remove', 'change']).each(function(event) {
-      that.listenTo(that.topics, event, that.renderEdit);
+      self.listenTo(self.topics, event, self.renderEdit);
     });
   },
 
   renderEdit: function() {
-    var that = this;
+    var self = this;
 
-    this._render(this.editTemplate)
+    this._render(this.editTemplate);
+
+    // Bind typeahead functionality.
     this.$el.find("#topic_title").typeahead({
       minLength: 2,
 
+      // Get topics from server matching what has been typed in so far.
       source: function(term, process) {
         $.get("/topics", {term: term}, function(topicsData) {
-          that.typeAheadTopics = new Inquisit.Collections.Topics()
-          var matchList = []
+          self.typeAheadTopics = new Inquisit.Collections.Topics()
+          var matchList = [];
 
+          // Filter out topics that have already been tagged on this question.
           _(topicsData).each(function(topicData) {
-            if (!that.topics.findWhere(topicData.topic)) {
+            if (!self.topics.findWhere(topicData.topic)) {
               var topic = Inquisit.Models.Topic.findOrCreate(
                 topicData, {parse: true}
               );
-              that.typeAheadTopics.add(topic);
+              self.typeAheadTopics.add(topic);
               matchList.push(topic.get('title'));
             }
           });
 
+          // Add option to create new topic.
           matchList.push('Create Topic: "' + term + '"');
 
           process(matchList);
         });
       },
 
+      // Add topic to list when selected
       updater: function(title) {
-        var newTopic = /^Create Topic: "(.*)"$/.exec(title)
+        var newTopic = /^Create Topic: "(.*)"$/.exec(title);
 
-        if (newTopic) {
-          that.topics.create({title: newTopic[1]}, {
-            url: "questions/" + that.model.id + "/topics"
+        if (newTopic) { // Create a new topic on the server & add to question.
+          self.topics.create({title: newTopic[1]}, {
+            url: "questions/" + self.model.id + "/topics"
           });
 
-        } else {
-          var topic = that.typeAheadTopics.findWhere({title: title});
+        } else { // Add existing topic to question.
+          var topic = self.typeAheadTopics.findWhere({title: title});
 
+          self.topics.add(topic);
           topic.save({}, {
-            url: "questions/" + that.model.id + "/topics/" + topic.id,
-            success: function(topic) {
-              that.topics.add(topic);
-            }
+            url: "questions/" + self.model.id + "/topics/" + topic.id,
           });
         }
       }
     });
 
-    return this
+    return this;
   },
 
   eventRemoveTopic: function(event) {
@@ -78,13 +83,8 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
     var id = $(event.currentTarget).data('id');
     var topic = this.topics.get(id);
 
-    var that = this;
-    this.model.save({}, {
-      wait: true,
-      success: function() {
-        that.topics.remove(topic);
-      }
-    });
+    this.topics.remove(topic);
+    this.model.save();
   }
 
 });
