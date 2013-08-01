@@ -63,6 +63,10 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
         });
       },
 
+      sorter: function(matchList) {
+        return matchList;
+      },
+
       // Add topic to list when selected
       updater: function(title) {
         var newTopic = /^Create Topic: "(.*)"$/.exec(title);
