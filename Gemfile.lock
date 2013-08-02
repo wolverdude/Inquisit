@@ -87,7 +87,10 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
+    mini_portile (0.5.0)
     multi_json (1.7.7)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     orm_adapter (0.4.0)
     pg (0.15.1)
     polyglot (0.3.3)
@@ -118,6 +121,8 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     sass (3.2.9)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -152,8 +157,10 @@ DEPENDENCIES
   devise
   jquery-rails
   letter_opener
+  nokogiri
   pg
   rabl
   rails (= 3.2.13)
+  rest-client
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)

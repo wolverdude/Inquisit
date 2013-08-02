@@ -27,7 +27,11 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
 
     this._render(this.editTemplate);
 
+    // Unbind any old typeahead.
+    this.$typaheadEl && this.$typeaheadEl.unbind();
+
     // Bind typeahead functionality.
+    this.$typeaheadEl = this.$el.find("#topic_title");
     this.$el.find("#topic_title").typeahead({
       minLength: 2,
 
@@ -88,6 +92,11 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
     });
 
     return this;
+  },
+
+  close: function() {
+    // unbind typahead
+    this.$typeaheadEl && this.$typaheadEl.unbind();
   },
 
   eventRemoveTopic: function(event) {
