@@ -77,7 +77,10 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
 
         if (newTopic) { // Create a new topic on the server & add to question.
           self.topics.create({title: newTopic[1]}, {
-            url: "questions/" + self.model.id + "/topics"
+            url: "questions/" + self.model.id + "/topics",
+            success: function(topic) {
+              delete topic.url // reset url property
+            }
           });
 
         } else { // Add existing topic to question.
@@ -86,7 +89,10 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
           self.topics.add(topic);
           topic.save({}, {
             url: "questions/" + self.model.id + "/topics/" + topic.id,
-          });
+            success: function(topic) {
+              delete topic.url // reset url property
+            }
+           });
         }
       }
     });
