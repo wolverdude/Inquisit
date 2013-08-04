@@ -6,12 +6,17 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'devise'
 gem 'rabl'
-gem 'nokogiri'
-gem 'rest-client'
 
 # frontend
 gem 'jquery-rails'
 gem 'backbone-on-rails'
+
+# scripting
+gem 'nokogiri'
+gem 'rest-client'
+
+# monitoring
+gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -24,4 +29,5 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'debugger'
   gem 'letter_opener'
+  gem 'rspec'
 end

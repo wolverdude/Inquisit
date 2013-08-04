@@ -20,5 +20,6 @@
 # Ignore files created for Linux Markdown compatibility
 *.mdown
 
-# Ignore database.yml to keep passwords safe.
+# Ignore yaml files to keep passwords safe.
 /config/database.yml
+/config/newrelic.yml
