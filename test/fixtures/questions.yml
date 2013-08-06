@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  title: MyString
-  description: MyText
-  asker: 
-  anonymous: false
+  id: 1
+  title: Is this a question?
+  description: Am I asking something?
+  asker_id: 1
+  anonymous: true
 
 two:
-  title: MyString
-  description: MyText
-  asker: 
+  id: 2
+  title: Do you need a description?
+  description:
+  asker_id: 2
   anonymous: false

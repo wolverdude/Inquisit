@@ -1,13 +1,32 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+require 'mocha/setup'
 
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
-  #
-  # Note: You'll currently still have to declare fixtures explicitly in integration tests
-  # -- they do not yet inherit this setting
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  def assert_invalid(model, attribute, message=nil)
+    model.valid?
+    assert !model.errors[attribute].empty?, message
+  end
+
+  def assert_valid(model, attribute, message=nil)
+    model.valid?
+    assert model.errors[attribute].empty?, message
+  end
+
+  def assert_presence_validation(model, attribute)
+    model.send("#{attribute}=", nil)
+
+    assert_invalid model, attribute, "presence of #{attribute} not validated"
+  end
+
+  def assert_uniqueness_validation(model, attribute)
+    copy = model.clone
+    copy.id = nil
+
+    debugger
+    assert_invalid copy, attribute, "uniqueness of #{attribute} not validated"
+  end
 end

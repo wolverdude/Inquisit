@@ -29,5 +29,8 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'debugger'
   gem 'letter_opener'
-  gem 'rspec'
+end
+
+group :test do
+  gem 'mocha'
 end
