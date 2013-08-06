@@ -27,6 +27,7 @@ This is an imitation of quora.com. I built it from the ground using these techno
 * Server-integrated [autocomplete](http://wolvman.tumblr.com/post/55091970585/autocomplete-with-ajax-week-9-day-2).
 
 ### Featured code:
+* [Unit Tests](test/unit/answer_test.rb) with [Test Helpers](test/test_helper.rb)
 * [Arel Query Chaining](app/models/answer.rb#L9-25)
 * [Backbone Memory Management](app/assets/javascripts/views/questions/questions_show.js#L64-81)
 * [Basic Dual-Template Backbone Subview](app/assets/javascripts/views/parent_views/show_edit_sub_view.js)

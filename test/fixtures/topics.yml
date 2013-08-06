@@ -1,2 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+one:
+  id: 1
+  title: meta-question
+
+two:
+  id: 2
+  title: validations
+
+three:
+  id: 3
+  title: descriptions

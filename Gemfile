@@ -15,9 +15,6 @@ gem 'backbone-on-rails'
 gem 'nokogiri'
 gem 'rest-client'
 
-# monitoring
-gem 'newrelic_rpm'
-
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -32,5 +29,9 @@ group :development, :test do
 end
 
 group :test do
-  gem 'mocha'
+  gem 'mocha', :require => false
+end
+
+group :production do
+  gem 'newrelic_rpm'
 end

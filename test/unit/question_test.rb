@@ -6,6 +6,7 @@ class QuestionTest < ActiveSupport::TestCase
     @question = questions(:one)
   end
 
+  # validations
   test "Validates presence of asker" do
     assert_presence_validation(@question, :asker)
   end
@@ -19,8 +20,22 @@ class QuestionTest < ActiveSupport::TestCase
   end
 
   test "Does not validate presence of description" do
-    @question.description = nil
-    assert_valid @question, :description, "description presence being validated"
+    assert_presence_validation(@question, :description, false)
+  end
+
+  # self.answers_with_vote_info
+  test "answers_with_vote_info calls Answer.with_vote_info" do
+    Answer.stubs(:where)
+    Answer.expects(:with_vote_info).returns(Answer)
+
+    @question.answers_with_vote_info(1)
+  end
+
+  test "answers_with_vote_info should limit by it's own id" do
+    Answer.stubs(:with_vote_info).returns(Answer)
+    Answer.expects(:where).with(question_id: @question.id)
+
+    @question.answers_with_vote_info(1)
   end
 
 end

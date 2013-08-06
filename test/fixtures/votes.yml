@@ -1,2 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+one:
+  user_id: 2
+  answer_id: 1
+  count: 1
+
+two:
+  user_id: 1
+  answer_id: 2
+  count: 0
+
+three:
+  user_id: 2
+  answer_id: 3
+  count: -1

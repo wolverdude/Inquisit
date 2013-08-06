@@ -6,27 +6,40 @@ require 'mocha/setup'
 class ActiveSupport::TestCase
   fixtures :all
 
-  def assert_invalid(model, attribute, message=nil)
+  # Validate tells whether the attribute is supposed to be validated.
+  # To assert no validation, pass validate = false.
+  def assert_validation(model, attribute, validate=true)
+    negator = "not" if validate
+
+    yield(model, attribute) if block_given?
+
     model.valid?
-    assert !model.errors[attribute].empty?, message
+    assert(
+      # (if it's not validated, errors should be empty)
+      # (if it is validated, errors should not be empty)
+      validate ^ model.errors[attribute].empty?,
+      "uniqueness of #{attribute} #{negator} being validated"
+    )
   end
 
-  def assert_valid(model, attribute, message=nil)
-    model.valid?
-    assert model.errors[attribute].empty?, message
+  def assert_presence_validation(model, attribute, validate=true)
+    assert_validation(model, attribute, validate) do |model, attribute|
+      model.send("#{attribute}=", nil)
+
+      model
+    end
   end
 
-  def assert_presence_validation(model, attribute)
-    model.send("#{attribute}=", nil)
+  def assert_uniqueness_validation(model, attribute, validate=true)
+    assert_validation(model, attribute, validate) do |model, attribute|
+      copy = model.clone
+      copy.id = nil
 
-    assert_invalid model, attribute, "presence of #{attribute} not validated"
+      # block for testing scopes
+      yield(copy) if block_given?
+
+      copy
+    end
   end
 
-  def assert_uniqueness_validation(model, attribute)
-    copy = model.clone
-    copy.id = nil
-
-    debugger
-    assert_invalid copy, attribute, "uniqueness of #{attribute} not validated"
-  end
 end

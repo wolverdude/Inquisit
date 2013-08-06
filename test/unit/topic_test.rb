@@ -1,7 +1,14 @@
 require 'test_helper'
 
 class TopicTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+
+  def setup
+    @topic = topics(:one)
+  end
+
+  # validations
+  test "Validates presence of title" do
+    assert_presence_validation(@topic, :title)
+  end
+
 end
