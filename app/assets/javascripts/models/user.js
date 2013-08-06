@@ -11,7 +11,12 @@ Inquisit.Models.User = Backbone.RelationalModel.extend({
     key: 'answers',
     relatedModel: "Inquisit.Models.Answer",
     includeInJSON: false,
-    parse: true
+    parse: true,
+    reverseRelation: {
+      key: 'user',
+      includeInJSON: false
+    }
+
   }],
 
   parse: function(resp) {
