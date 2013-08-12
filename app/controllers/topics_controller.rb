@@ -11,10 +11,6 @@ class TopicsController < ApplicationController
         render :json => @topic.errors.full_messages, :status => 422
       end
     end
-    if params[:question_id]
-      question = Question.find(params[:question_id])
-      @topic.questions <<= question
-    end
   end
 
   def destroy
@@ -43,10 +39,6 @@ class TopicsController < ApplicationController
       render "show"
     else
       render :json => @topic.errors.full_messages, :status => 422
-    end
-    if params[:question_id]
-      question = Question.find(params[:question_id])
-      @topic.questions <<= question
     end
   end
 

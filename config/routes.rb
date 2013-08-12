@@ -14,7 +14,6 @@ Inquisit::Application.routes.draw do
 
   resources :questions, :except => [:edit, :new] do
     resources :answers, :only => [:create]
-    resources :topics, :only => [:create, :update]
   end
 
   resources :topics, :except => [:edit, :new] do

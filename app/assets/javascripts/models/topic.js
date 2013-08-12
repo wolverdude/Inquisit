@@ -1,4 +1,5 @@
 Inquisit.Models.Topic = Backbone.RelationalModel.extend({
+
   relations: [{
     type: Backbone.HasMany,
     key: 'questions',

@@ -11,7 +11,7 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
 
   // Initialize with binding that will be passed to render functions.
   initialize: function(binding) {
-    this.binding = binding;
+    this.binding = binding; // Passed to the template on render.
     this.model = binding.model;
     this.topics = binding.model.get('topics');
 
@@ -27,7 +27,7 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
 
     this._render(this.editTemplate);
 
-    // Unbind any old typeahead.
+    // Unbind any old typeahead to prevent memory leaks.
     this.$typaheadEl && this.$typeaheadEl.unbind();
 
     // Bind typeahead functionality.
@@ -44,10 +44,12 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
           reset: true,
 
           success: function(topics) {
+            // Setup list for typeahead
             var matchList = topics.map(function(topic) {
               return topic.get('title');
             });
 
+            // Add option to create new topic if doesn't already exist.
             var termInMatchList = _(matchList).any(function(topicTitle) {
               return (topicTitle === term);
             });
@@ -56,7 +58,6 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
               return (topic.get('title') === term);
             });
 
-            // Add option to create new topic.
             if (!termInMatchList && !termInQuestionTopics) {
               if (matchList.length === 8) { matchList.pop() }
               matchList.push('Create Topic: "' + term + '"');
@@ -67,33 +68,25 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
         });
       },
 
+      // override default typeahead sort method.
       sorter: function(matchList) {
         return matchList;
       },
 
-      // Add topic to list when selected
+      // Add topic to question when selected.
       updater: function(title) {
         var newTopic = /^Create Topic: "(.*)"$/.exec(title);
 
-        if (newTopic) { // Create a new topic on the server & add to question.
-          self.topics.create({title: newTopic[1]}, {
-            url: "questions/" + self.model.id + "/topics",
-            success: function(topic) {
-              delete topic.url // reset url property
-            }
-          });
+        if (newTopic) { // Create a new topic on the server.
+          var topic = self.topics.create({title: newTopic[1]});
 
         } else { // Add existing topic to question.
           var topic = typeaheadTopics.findWhere({title: title});
-
           self.topics.add(topic);
-          topic.save({}, {
-            url: "questions/" + self.model.id + "/topics/" + topic.id,
-            success: function(topic) {
-              delete topic.url // reset url property
-            }
-           });
         }
+
+        self.model.save(); // Update related topics.
+        topic.get('questions').add(self.model); // Add to inverse relation.
       }
     });
 
@@ -101,7 +94,7 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
   },
 
   close: function() {
-    // unbind typahead
+    // Unbind typahead to prevent memory leaks.
     this.$typeaheadEl && this.$typaheadEl.unbind();
   },
 
@@ -112,7 +105,7 @@ Inquisit.Views.SubViews.Topics = Inquisit.Views.ShowEditSubView.extend({
     var topic = this.topics.get(id);
 
     this.topics.remove(topic);
-    this.model.save();
+    this.model.save(); // Update related topics.
   }
 
 });
