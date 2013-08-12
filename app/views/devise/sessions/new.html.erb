@@ -1,6 +1,7 @@
 <div class="form-horizontal">
   <div class="controls">
     <h2>Sign in</h2>
+    <p>If you don't have an account, <%= link_to "sign up", new_registration_path(resource) %> or use the <a href="#" id="guest-account">guest account</a>.</p>
   </div>
 
   <%= form_for(resource, :as => resource_name,
@@ -36,3 +37,12 @@
   </div>
 
 </div>
+
+<script type="text/javascript">
+  $('#guest-account').click(function(event) {
+    event.preventDefault()
+
+    $('#user_email').val('guest@inquisit.com')
+    $('#user_password').val('12345678')
+  });
+</script>

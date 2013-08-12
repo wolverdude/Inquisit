@@ -9,12 +9,7 @@ This is an imitation of quora.com. I built it from the ground using these techno
 * [Twitter Bootstrap](http://twitter.github.io/bootstrap/)
 * [Devise](https://github.com/plataformatec/devise)
 
-### You can sign in with the guest account:
-
-* email: guest@inquisit.com
-* password: 12345678
-
-## [Try it out!](https://inquisit.herokuapp.com/users/sign_in)
+## [Try it out!](https://inquisit.herokuapp.com/)
 
 ### Current features include:
 
@@ -45,4 +40,4 @@ This is an imitation of quora.com. I built it from the ground using these techno
 * The font I chose for the logo wasn't supported on most browsers, so I had to force-load it with CSS3 `@font-face`.
 * Immitating (not copying) Quora.com's [styling](http://wolvman.tumblr.com/post/55132894770/styling-in-place-week-9-day-3).
 
-## Seriously, [try it out!](https://inquisit.herokuapp.com/users/sign_in)
+## Seriously, [try it out!](https://inquisit.herokuapp.com/)

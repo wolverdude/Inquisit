@@ -15,7 +15,13 @@
 <% end %>
 
 <div class="form-horizontal">
-  <div class="controls"><h2>Sign up</h2></div>
+  <div class="controls">
+    <h2>Sign up</h2>
+    <p>There's no privacy policy, and I don't actually use any of this info, so feel free to come up with a completely bogus name and email.<p>
+    </p>Be creative!</p>
+    <p>-- Ferg Nerdferder</p>
+    <br />
+  </div>
 
   <%= form_for(resource, :as => resource_name,
     :url => registration_path(resource_name)) do |f| %>
@@ -43,6 +49,10 @@
       <div class="controls">
         <%= f.password_field :password_confirmation %>
     </div></div>
+
+    <div class="controls">
+      <p>(The password is <a href="http://en.wikipedia.org/wiki/Cryptographic_hash_function#Password_verification">hashed and salted</a>, just so you know.)</p>
+    </div>
 
     <div class="controls">
       <%= f.submit "Sign up", :class => "btn btn-primary" %>
